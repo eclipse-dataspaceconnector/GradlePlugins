@@ -31,18 +31,17 @@ if (actualVersion == "unspecified") {
 
 allprojects {
     apply(plugin = "checkstyle")
+    apply(plugin = "maven-publish")
     version = actualVersion
     group = groupId
 
     // for all gradle plugins:
     pluginManager.withPlugin("java-gradle-plugin") {
-        apply(plugin = "maven-publish")
         apply(plugin = "com.gradle.plugin-publish")
     }
 
     // for all java libs:
     pluginManager.withPlugin("java-library") {
-        apply(plugin = "maven-publish")
         if (!project.hasProperty("skip.signing")) {
             apply(plugin = "signing")
 
@@ -67,6 +66,7 @@ allprojects {
                     sign(publishing.publications)
                 }
             }
+
         }
 
         java {
@@ -82,6 +82,23 @@ allprojects {
             withJavadocJar()
             withSourcesJar()
         }
+
+        dependencies {
+            // Use JUnit test framework for unit tests
+            testImplementation("org.junit.jupiter:junit-jupiter-api:${jupiterVersion}")
+            testImplementation("org.junit.jupiter:junit-jupiter-params:${jupiterVersion}")
+            testImplementation("org.junit.jupiter:junit-jupiter-params:${jupiterVersion}")
+            testImplementation("org.assertj:assertj-core:${assertj}")
+            testImplementation("org.mockito:mockito-core:${mockitoVersion}")
+            testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${jupiterVersion}")
+        }
+    }
+
+    tasks.withType<Test> {
+        useJUnitPlatform()
+        testLogging {
+            showStandardStreams = true
+        }
     }
 
     // configure checkstyle version
@@ -93,7 +110,6 @@ allprojects {
     repositories {
         mavenCentral()
     }
-
 
     // let's not generate any reports because that is done from within the Github Actions workflow
     tasks.withType<Checkstyle> {

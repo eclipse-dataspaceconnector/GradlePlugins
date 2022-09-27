@@ -1,0 +1,1 @@
+This module contains the business logic code for the `autodoc` feature, i.e. the actual annotation processor.
