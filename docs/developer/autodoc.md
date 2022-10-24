@@ -31,7 +31,7 @@ In order to use the `autodoc` plugin we must follow a few simple steps. All exam
         }
     }
     dependencies {
-        classpath("org.eclipse.dataspaceconnector.autodoc:org.eclipse.dataspaceconnector.autodoc.gradle.plugin:<VERSION>>")
+        classpath("org.eclipse.edc.autodoc:org.eclipse.edc.autodoc.gradle.plugin:<VERSION>>")
     }
 }
    ```
@@ -45,13 +45,13 @@ There are two options to apply a plugin. For multi-module builds this should be 
 1. via `plugin` block:
    ```kotlin
    plugins {
-       id("org.eclipse.dataspaceconnector.autodoc")
+       id("org.eclipse.edc.autodoc")
    }
    ```
 2. using the iterative approach, useful when applying to `allprojects` or `subprojects`:
    ```kotlin
    subprojects{
-      apply(plugin = "org.eclipse.dataspaceconnector.autodoc")
+      apply(plugin = "org.eclipse.edc.autodoc")
    }
    ```
 
@@ -64,7 +64,7 @@ The `autodoc` plugin exposes the following configuration values:
    omitted, the plugin will use its own version. Please enter _just_ the SemVer-compliant version string,
    no `groupId` or `artifactName` are needed.
    ```kotlin
-   configure<org.eclipse.dataspaceconnector.plugins.autodoc.AutodocExtension> {
+   configure<org.eclipse.edc.plugins.autodoc.AutodocExtension> {
        processorVersion.set("<VERSION>")
    }
    ```

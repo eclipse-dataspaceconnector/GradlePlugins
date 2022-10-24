@@ -26,7 +26,7 @@ gradlePlugin {
             description =
                 "Plugin to generate a documentation manifest for the EDC Metamodel, i.e. extensions, SPIs, etc."
             id = "${groupId}.autodoc"
-            implementationClass = "org.eclipse.dataspaceconnector.plugins.autodoc.AutodocPlugin"
+            implementationClass = "org.eclipse.edc.plugins.autodoc.AutodocPlugin"
         }
     }
 }

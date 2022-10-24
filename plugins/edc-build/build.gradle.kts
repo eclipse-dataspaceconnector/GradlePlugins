@@ -33,14 +33,14 @@ gradlePlugin {
             description =
                 "Meta-plugin that provides the capabilities of the EDC build"
             id = "${groupId}.edc-build-base"
-            implementationClass = "org.eclipse.dataspaceconnector.plugins.edcbuild.EdcBuildBasePlugin"
+            implementationClass = "org.eclipse.edc.plugins.edcbuild.EdcBuildBasePlugin"
         }
         create("edc-build") {
             displayName = "edc-build"
             description =
                 "Plugin that applies the base capabilities and provides default configuration for the EDC build"
             id = "${groupId}.edc-build"
-            implementationClass = "org.eclipse.dataspaceconnector.plugins.edcbuild.EdcBuildPlugin"
+            implementationClass = "org.eclipse.edc.plugins.edcbuild.EdcBuildPlugin"
         }
     }
 }

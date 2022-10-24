@@ -15,7 +15,7 @@ gradlePlugin {
             description =
                 "Plugin to verify that a project has no duplicate submodules (by name)"
             id = "${groupId}.test-summary"
-            implementationClass = "org.eclipse.dataspaceconnector.plugins.testsummary.TestSummaryPlugin"
+            implementationClass = "org.eclipse.edc.plugins.testsummary.TestSummaryPlugin"
         }
     }
 }
