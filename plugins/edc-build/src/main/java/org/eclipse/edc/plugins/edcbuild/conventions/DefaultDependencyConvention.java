@@ -27,7 +27,7 @@ import static org.eclipse.edc.plugins.edcbuild.conventions.ConventionFunctions.r
  */
 class DefaultDependencyConvention implements EdcConvention {
 
-    private static final String EDC_GROUP_ID = "org.eclipse.dataspaceconnector";
+    private static final String EDC_GROUP_ID = "org.eclipse.edc";
 
     @Override
     public void apply(Project target) {
