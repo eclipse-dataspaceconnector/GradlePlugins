@@ -32,7 +32,7 @@ public class AutodocPlugin implements Plugin<Project> {
 
     private static final String PROCESSOR_ARTIFACT_NAME = "autodoc-processor";
     private static final String PLUGIN_ARTIFACT_NAME = "autodoc-plugin";
-    private static final String GROUP_NAME = "org.eclipse.edc";
+    private static final String GROUP_NAME = "org.eclipse.dataspaceconnector";
 
     @Override
     public void apply(Project project) {

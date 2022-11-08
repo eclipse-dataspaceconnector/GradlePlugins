@@ -41,29 +41,37 @@ public class EdcBuildPlugin implements Plugin<Project> {
     @Override
     public void apply(Project target) {
 
-        // apply all plugins
-        target.getPlugins().apply(EdcBuildBasePlugin.class);
-
         // register the extension(s)
         target.getExtensions().create("edcBuild", BuildExtension.class, target.getObjects());
 
-        // apply the conventions
-        of(
-                rootBuildScript(),
-                java(),
-                repositories(),
-                defaultDependencies(),
-                checkstyle(),
-                mavenPublishing(),
-                signing(),
-                mavenPom(),
-                jacoco(),
-                dependencyAnalysis(),
-                tests(),
-                jar(),
-                nexusPublishing(),
-                swagger()
-        ).forEach(c -> c.apply(target));
+        // apply all plugins
+        target.getPlugins().apply(EdcBuildBasePlugin.class);
+
+
+        // configuration values are only guaranteed to be set after the project has been evaluated
+        // https://docs.gradle.org/current/userguide/build_lifecycle.html
+        target.afterEvaluate(project -> {
+            if (project.getState().getFailure() != null) {
+                return;
+            }
+            // apply the conventions
+            of(
+                    rootBuildScript(),
+                    java(),
+                    repositories(),
+                    defaultDependencies(),
+                    checkstyle(),
+                    mavenPublishing(),
+                    signing(),
+                    mavenPom(),
+                    jacoco(),
+                    dependencyAnalysis(),
+                    tests(),
+                    jar(),
+                    nexusPublishing(),
+                    swagger()
+            ).forEach(c -> c.apply(project));
+        });
 
     }
 }

@@ -39,11 +39,11 @@ class DependencyAnalysisConvention implements EdcConvention {
             return;
         }
 
-        target.getPluginManager().apply(DependencyAnalysisPlugin.class);
 
         // the dependency analysis plugin will behave differently for root projects and subprojects.
         // for example, the extension will only be available for the root project
         if (target.getRootProject() == target) {
+            target.getPluginManager().apply(DependencyAnalysisPlugin.class);
             var ext = requireExtension(target, DependencyAnalysisExtension.class);
 
             ext.issues(is -> is.all(a -> {
