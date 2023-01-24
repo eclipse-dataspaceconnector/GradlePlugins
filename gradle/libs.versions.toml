@@ -1,0 +1,126 @@
+[metadata]
+format.version = "1.1"
+
+[versions]
+azure-rm = "2.12.0"
+apacheCommonsPool2 = "2.11.1"
+assertj = "3.22.0"
+atomikos = "5.0.8"
+awaitility = "4.2.0"
+aws = "2.17.288"
+bouncyCastle-jdk18on = "1.72"
+bouncyCastle = "1.70" # this bouncycastle version is deprecated in favor of the jdk18on
+cloudEvents = "2.3.0"
+failsafe = "3.2.4"
+gatling = "3.7.5"
+googleCloudIamAdmin = "1.2.5"
+googleCloudIamCredentials = "2.3.5"
+googleCloudStorage = "2.12.0"
+h2 = "2.1.210"
+httpMockServer = "5.14.0"
+infomodel = "4.1.3"
+jackson = "2.14.0-rc2"
+jakartaValidation = "3.0.2"
+jersey = "3.0.8"
+jetbrainsAnnotation = "15.0"
+jetty = "11.0.12"
+jta = "1.3"
+jupiter = "5.8.2"
+jwt = "3.13.0"
+micrometer = "1.8.2"
+mockito = "4.2.0"
+nimbus = "9.25"
+okhttp = "4.10.0"
+openTelemetry = "1.12.0"
+postgres = "42.4.0"
+restAssured = "4.5.0"
+rsApi = "3.1.0"
+servletApi = "4.0.4"
+slf4j = "2.0.0-alpha7"
+
+[libraries]
+# Core EDC dependencies
+assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
+awaitility = { module = "org.awaitility:awaitility", version.ref = "awaitility" }
+bouncyCastle-bcprovJdk18on = { module = "org.bouncycastle:bcprov-jdk18on", version.ref = "bouncyCastle-jdk18on" }
+bouncyCastle-bcpkixJdk18on = { module = "org.bouncycastle:bcpkix-jdk18on", version.ref = "bouncyCastle-jdk18on" }
+# these two bouncycastle versions are deprecated in favor of the jdk18on
+bouncyCastle-bcprov = { module = "org.bouncycastle:bcprov-jdk15on", version.ref = "bouncyCastle" }
+bouncyCastle-bcpkix = { module = "org.bouncycastle:bcpkix-jdk15on", version.ref = "bouncyCastle" }
+cloudEvents = { module = "io.cloudevents:cloudevents-http-basic", version.ref = "cloudEvents" }
+failsafe-core = { module = "dev.failsafe:failsafe", version.ref = "failsafe" }
+failsafe-okhttp = { module = "dev.failsafe:failsafe-okhttp", version.ref = "failsafe" }
+gatling = { module = "io.gatling.highcharts:gatling-charts-highcharts", version.ref = "gatling" }
+h2 = { module = "com.h2database:h2", version.ref = "h2" }
+mockserver-netty = { module = "org.mock-server:mockserver-netty", version.ref = "httpMockServer" }
+mockserver-client = { module = "org.mock-server:mockserver-client-java", version.ref = "httpMockServer" }
+fraunhofer-infomodel = { module = "de.fraunhofer.iais.eis.ids.infomodel:java", version.ref = "infomodel" }
+jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref = "jackson" }
+jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson" }
+jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
+jackson-datatypeJsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson" }
+jakarta-validation = { module = "jakarta.validation:jakarta.validation-api", version.ref = "jakartaValidation" }
+jakarta-rsApi = { module = "jakarta.ws.rs:jakarta.ws.rs-api", version.ref = "rsApi" }
+jersey-beanvalidation = { module = "org.glassfish.jersey.ext:jersey-bean-validation", version.ref = "jersey" }
+jersey-multipart = { module = "org.glassfish.jersey.media:jersey-media-multipart", version.ref = "jersey" }
+jersey-common = { module = "org.glassfish.jersey.core:jersey-common", version.ref = "jersey" }
+jersey-server = { module = "org.glassfish.jersey.core:jersey-server", version.ref = "jersey" }
+jersey-servlet = { module = "org.glassfish.jersey.containers:jersey-container-servlet", version.ref = "jersey" }
+jersey-servletcore = { module = "org.glassfish.jersey.containers:jersey-container-servlet-core", version.ref = "jersey" }
+jersey-jackson = { module = "org.glassfish.jersey.media:jersey-media-json-jackson", version.ref = "jersey" }
+jersey-inject = { module = "org.glassfish.jersey.inject:jersey-hk2", version.ref = "jersey" }
+jetty-websocket = { module = "org.eclipse.jetty.websocket:websocket-jakarta-server", version.ref = "jetty" }
+jta = { module = "javax.transaction:javax.transaction-api", version.ref = "jta" }
+junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter" }
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jupiter" }
+junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "jupiter" }
+micrometer = { module = "io.micrometer:micrometer-core", version.ref = "micrometer" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
+mockito-inline = { module = "org.mockito:mockito-inline", version.ref = "mockito" }
+nimbus-jwt = { module = "com.nimbusds:nimbus-jose-jwt", version.ref = "nimbus" }
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+opentelemetry-api = { module = "io.opentelemetry:opentelemetry-api", version.ref = "openTelemetry" }
+opentelemetry-annotations = { module = "io.opentelemetry:opentelemetry-extension-annotations", version.ref = "openTelemetry" }
+restAssured = { module = "io.rest-assured:rest-assured", version.ref = "restAssured" }
+slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+
+# Azure dependencies
+azure-cosmos = { group = "com.azure", name = "azure-cosmos", version = "4.37.0" }
+azure-eventgrid = { group = "com.azure", name = "azure-messaging-eventgrid", version = "4.12.2" }
+azure-identity = { group = "com.azure", name = "azure-identity", version = "1.6.0" }
+azure-keyvault = { group = "com.azure", name = "azure-security-keyvault-secrets", version = "4.2.3" }
+azure-resourcemanager = { group = "com.azure.resourcemanager", name = "azure-resourcemanager", version.ref = "azure-rm" }
+azure-resourcemanager-authorization = { group = "com.azure.resourcemanager", name = "azure-resourcemanager-authorization", version.ref = "azure-rm" }
+azure-resourcemanager-datafactory = { group = "com.azure.resourcemanager", name = "azure-resourcemanager-datafactory", version = "1.0.0-beta.12" }
+azure-resourcemanager-keyvault = { group = "com.azure.resourcemanager", name = "azure-resourcemanager-keyvault", version.ref = "azure-rm" }
+azure-resourcemanager-storage = { group = "com.azure.resourcemanager", name = "azure-resourcemanager-storage", version.ref = "azure-rm" }
+azure-storageblob = { group = "com.azure", name = "azure-storage-blob", version = "12.19.1" }
+
+# AWS dependencies
+aws-sts = { module = "software.amazon.awssdk:sts", version.ref = "aws" }
+aws-iam = { module = "software.amazon.awssdk:iam", version.ref = "aws" }
+aws-s3 = { module = "software.amazon.awssdk:s3", version.ref = "aws" }
+
+# Google dependencies
+googlecloud-iam-admin = { module = "com.google.cloud:google-iam-admin", version.ref = "googleCloudIamAdmin" }
+googlecloud-iam-credentials = { module = "com.google.cloud:google-cloud-iamcredentials", version.ref = "googleCloudIamCredentials" }
+googlecloud-storage = { module = "com.google.cloud:google-cloud-storage", version.ref = "googleCloudStorage" }
+
+# other technology extensions
+apache-commons-pool = { module = "org.apache.commons:commons-pool2", version.ref = "apacheCommonsPool2" }
+atomikos-jta = { module = "com.atomikos:transactions-jta", version.ref = "atomikos" }
+atomikos-jdbc = { module = "com.atomikos:transactions-jdbc", version.ref = "atomikos" }
+postgres = { module = "org.postgresql:postgresql", version.ref = "postgres" }
+
+[bundles]
+# to be used in jersey-core and jetty-core
+jersey-core = ["jersey.server", "jersey.common", "jersey.jackson", "jersey.multipart", "jersey.inject", "jersey.servlet", "jersey.servletcore"]
+# to be used in api-core
+jersey-api = ["jersey.beanvalidation", "jersey.common", "jersey.server"]
+
+jackson = ["jackson.core", "jackson.annotations", "jackson.databind", "jackson-datatypeJsr310"]
+
+jupiter = ["junit-jupiter-api", "junit-jupiter-params"]
+
+[plugins]
+# nothing here yet

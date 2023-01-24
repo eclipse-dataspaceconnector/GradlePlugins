@@ -1,0 +1,1 @@
+This module contains a gradle plugin that prints a summary about a JUnit test run to the console.

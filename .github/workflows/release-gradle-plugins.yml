@@ -1,0 +1,84 @@
+name: Create Gradle Plugins Release/Snapshot
+on:
+  workflow_dispatch:
+    inputs:
+      release_version:
+        description: 'Version string that is used for publishing (e.g. "1.0.0", NOT "v1.0.0"). Appending -SNAPSHOT will create a snapshot release.'
+        required: true
+        type: string
+
+
+env:
+  RELEASE_VERSION: ${{ github.event.inputs.release_version || inputs.release_version }}
+
+jobs:
+
+  # Read the version and provide an output, which is then used by subsequent tasks.
+  Check-Release-Version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if SNAPSHOT version
+        run: |
+          echo "Creating version ${{ env.RELEASE_VERSION }}"
+
+    outputs:
+      release-version: ${{ env.RELEASE_VERSION }}
+
+  # Publish Gradle Plugins to OSSRH Staging using our EF Jenkins CI
+  Publish-Snapshot:
+    if: ${{ endsWith( needs.Check-Release-Version.outputs.release-version, '-SNAPSHOT') }}
+    needs:
+      - Check-Release-Version
+    runs-on: ubuntu-latest
+    steps:
+      # Trigger EF Jenkins. This job waits for Jenkins to complete the publishing, which may take a long time, because every
+      # module is signed individually, and parallelism is not available. Hence, the increased timeout of 3600 seconds.
+      # There is no way to cancel the process on Jenkins from withing GitHub.
+      - name: Trigger Release on EF Jenkins
+        uses: toptal/jenkins-job-trigger-action@master
+        with:
+          jenkins_url: "https://ci.eclipse.org/dataspaceconnector/"
+          jenkins_user: ${{ secrets.EF_JENKINS_USER }}
+          jenkins_token: ${{ secrets.EF_JENKINS_TOKEN }}
+          job_name: "Plugins-Publish-Snapshot"
+          job_params: |
+            {
+              "VERSION": "${{ env.RELEASE_VERSION }}"
+            }
+          job_timeout: "3600" # Default 30 sec. (optional)
+
+      # Publish Gradle Plugin(s) to the Gradle Portal
+  Publish-Release:
+    # cannot use the workflow-level env yet as it does not yet exist, must take output from previous job
+    if: ${{ !endsWith( needs.Check-Release-Version.outputs.release-version, '-SNAPSHOT') }}
+    needs:
+      - Check-Release-Version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Publish Autodoc Plugin
+        run: |
+          ./gradlew publishPlugins -Pgradle.publish.key=${{ secrets.GRADLE_PUBLISH_KEY }} -Pgradle.publish.secret=${{ secrets.GRADLE_PUBLISH_SECRET }} -Pskip.signing -Pversion=${{ env.RELEASE_VERSION }}
+  
+  
+
+  Create-Github-Release:
+    # cannot use the workflow-level env yet as it does not yet exist, must take output from previous job
+    if: ${{ !endsWith( needs.Check-Release-Version.outputs.release-version, '-SNAPSHOT') }}
+    needs:
+      - Check-Release-Version
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          generateReleaseNotes: true
+          tag: "v${{ env.RELEASE_VERSION }}"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          removeArtifacts: true

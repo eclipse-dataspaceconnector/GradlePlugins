@@ -1,0 +1,1 @@
+This module contains a gradle plugin that allows to merge partial OpenAPI spec files into one file.

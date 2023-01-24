@@ -1,1 +1,0 @@
-This module contains an example extension and verifies that the correct manifest file is generated.
