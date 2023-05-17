@@ -18,12 +18,3 @@ plugins {
 dependencies {
     api(project(":runtime-metamodel"))
 }
-
-publishing {
-    publications {
-        create<MavenPublication>("autodoc-processor") {
-            artifactId = "autodoc-processor"
-            from(components["java"])
-        }
-    }
-}

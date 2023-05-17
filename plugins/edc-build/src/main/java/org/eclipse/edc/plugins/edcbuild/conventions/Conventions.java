@@ -9,6 +9,7 @@
  *
  *  Contributors:
  *       Microsoft Corporation - initial API and implementation
+ *       Fraunhofer Institute for Software and Systems Engineering - add maven publication
  *
  */
 
@@ -81,5 +82,9 @@ public class Conventions {
 
     public static EdcConvention openApiMerger() {
         return new OpenApiMergerConvention();
+    }
+    
+    public static EdcConvention mavenPublication() {
+        return new MavenPublicationConvention();
     }
 }

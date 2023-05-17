@@ -20,12 +20,17 @@ import org.gradle.api.Project;
 import static org.eclipse.edc.plugins.edcbuild.conventions.Repositories.sonatypeRepo;
 
 class NexusPublishingConvention implements EdcConvention {
+
     @Override
     public void apply(Project target) {
         if (target == target.getRootProject()) {
+
+
             target.getExtensions().configure(NexusPublishExtension.class, nexusPublishExtension -> {
                 nexusPublishExtension.repositories(sonatypeRepo());
             });
         }
     }
+
+
 }

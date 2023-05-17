@@ -9,6 +9,7 @@
  *
  *  Contributors:
  *       Microsoft Corporation - initial API and implementation
+ *       Fraunhofer Institute for Software and Systems Engineering - add publish property
  *
  */
 
@@ -59,4 +60,7 @@ public abstract class BuildExtension {
     public SwaggerGeneratorExtension getSwagger() {
         return swagger;
     }
+
+    public abstract Property<Boolean> getPublish();
+
 }

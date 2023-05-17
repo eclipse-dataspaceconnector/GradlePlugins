@@ -30,11 +30,13 @@ class SigningConvention implements EdcConvention {
         if (target.hasProperty("skip.signing")) {
             return;
         }
+        var pubExt = requireExtension(target, PublishingExtension.class);
+        var publications = pubExt.getPublications();
+
         target.getPlugins().apply(SigningPlugin.class);
 
         var signExt = requireExtension(target, SigningExtension.class);
-        var pubExt = requireExtension(target, PublishingExtension.class);
         signExt.useGpgCmd();
-        signExt.sign(pubExt.getPublications());
+        signExt.sign(publications);
     }
 }

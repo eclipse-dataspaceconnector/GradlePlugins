@@ -19,9 +19,7 @@ import org.gradle.api.artifacts.DependencyResolutionListener;
 import org.gradle.api.artifacts.ResolvableDependencies;
 import org.gradle.api.tasks.compile.JavaCompile;
 
-import java.io.File;
 import java.util.List;
-import java.util.function.Supplier;
 
 import static java.lang.String.format;
 
@@ -33,28 +31,36 @@ class AutodocDependencyInjector implements DependencyResolutionListener {
     private static final String VERSION = "edc.version"; // must be identical to EdcModuleProcessor.VERSION
     private static final String ID = "edc.id"; // must be identical to EdcModuleProcessor.ID
     private static final String OUTPUTDIR = "edc.outputDir"; // must be identical to EdcModuleProcessor.EDC_OUTPUTDIR_OVERRIDE
+    private static final String DEPENDENCY_NAME = format("%s:%s", "org.eclipse.edc", "autodoc-processor");
     private final Project project;
-    private final String dependencyName;
-    private final Supplier<String> versionSupplier;
-    private final Supplier<File> outputDirectoryProvider;
+    private final AutodocExtension extension;
 
-    AutodocDependencyInjector(Project project, String dependencyName, Supplier<String> versionProvider, Supplier<File> outputDirectoryProvider) {
+    AutodocDependencyInjector(Project project, AutodocExtension extension) {
         this.project = project;
-        this.dependencyName = dependencyName;
-        versionSupplier = versionProvider;
-        this.outputDirectoryProvider = outputDirectoryProvider;
+        this.extension = extension;
     }
 
     @Override
     public void beforeResolve(ResolvableDependencies dependencies) {
-        var artifact = dependencyName + versionSupplier.get();
+        var processorVersion = extension.getProcessorVersion();
+
+        var artifact = DEPENDENCY_NAME;
+        if (processorVersion.isPresent()) {
+            var version = processorVersion.get();
+            artifact += ":" + version;
+            project.getLogger().debug("{}: use configured version from AutodocExtension (override) [{}]", project.getName(), version);
+        } else {
+            artifact += ":+";
+            project.getLogger().warn("No explicit configuration value for the annotationProcessor version was found. Please supply a configuration for the Autodoc Plugin's annotationProcessor.");
+        }
+
         if (addDependency(project, artifact)) {
             var task = project.getTasks().findByName("compileJava");
             if ((task instanceof JavaCompile)) {
                 var compileJava = (JavaCompile) task;
                 var versionArg = format("-A%s=%s", VERSION, project.getVersion());
                 var idArg = format("-A%s=%s:%s", ID, project.getGroup(), project.getName());
-                var outputArg = format("-A%s=%s", OUTPUTDIR, outputDirectoryProvider.get());
+                var outputArg = format("-A%s=%s", OUTPUTDIR, extension.getOutputDirectory().getOrNull());
 
                 compileJava.getOptions().getCompilerArgs().addAll(List.of(idArg, versionArg, outputArg));
             }

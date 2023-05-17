@@ -14,21 +14,20 @@
 
 package org.eclipse.edc.plugins.edcbuild.conventions;
 
+import org.gradle.api.Action;
 import org.gradle.api.Project;
-import org.gradle.api.artifacts.repositories.MavenArtifactRepository;
+import org.gradle.api.artifacts.dsl.RepositoryHandler;
 import org.gradle.api.publish.PublishingExtension;
 
+import java.util.Optional;
+
 import static org.eclipse.edc.plugins.edcbuild.conventions.ConventionFunctions.requireExtension;
-import static org.eclipse.edc.plugins.edcbuild.conventions.Repositories.releaseRepo;
-import static org.eclipse.edc.plugins.edcbuild.conventions.Repositories.snapshotRepo;
 
 /**
  * Configures the Maven repos for publishing depending on the project's version
  */
 class MavenPublishingConvention implements EdcConvention {
 
-
-    private static final String SNAPSHOT_SUFFIX = "-SNAPSHOT";
 
     @Override
     public void apply(Project target) {
@@ -37,14 +36,28 @@ class MavenPublishingConvention implements EdcConvention {
         }
         var pubExt = requireExtension(target, PublishingExtension.class);
 
-        if (pubExt.getRepositories().stream().noneMatch(repo -> repo.getName().equals(Repositories.REPO_NAME_SONATYPE) && repo instanceof MavenArtifactRepository)) {
+        Optional.ofNullable(getRepoOverride())
+                .ifPresent(pubExt::repositories);
+    }
 
-            if (target.getVersion().toString().endsWith(SNAPSHOT_SUFFIX)) {
-                pubExt.repositories(snapshotRepo());
-            } else {
-                pubExt.repositories(releaseRepo());
-            }
-        }
+    private Action<? super RepositoryHandler> getRepoOverride() {
+        var repoUrl = System.getProperty("edc.publish.url");
+        var repoName = System.getProperty("edc.publish.repoName");
+        var repoUser = System.getProperty("edc.publish.user");
+        var repoPwd = System.getProperty("edc.publish.password");
+
+
+        if (repoUrl == null || repoName == null) return null;
+
+        return handler -> handler.maven(repo -> {
+            repo.setUrl(repoUrl);
+            repo.credentials(cred -> {
+                cred.setUsername(repoUser);
+                cred.setPassword(repoPwd);
+            });
+            repo.setAllowInsecureProtocol(repoUrl.startsWith("http://"));
+            repo.setName(repoName);
+        });
     }
 
 

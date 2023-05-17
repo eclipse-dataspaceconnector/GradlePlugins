@@ -9,6 +9,7 @@
  *
  *  Contributors:
  *       Microsoft Corporation - initial API and implementation
+ *       Fraunhofer Institute for Software and Systems Engineering - add maven publication
  *
  */
 
@@ -26,6 +27,7 @@ import static org.eclipse.edc.plugins.edcbuild.conventions.Conventions.jacoco;
 import static org.eclipse.edc.plugins.edcbuild.conventions.Conventions.jar;
 import static org.eclipse.edc.plugins.edcbuild.conventions.Conventions.java;
 import static org.eclipse.edc.plugins.edcbuild.conventions.Conventions.mavenPom;
+import static org.eclipse.edc.plugins.edcbuild.conventions.Conventions.mavenPublication;
 import static org.eclipse.edc.plugins.edcbuild.conventions.Conventions.mavenPublishing;
 import static org.eclipse.edc.plugins.edcbuild.conventions.Conventions.nexusPublishing;
 import static org.eclipse.edc.plugins.edcbuild.conventions.Conventions.repositories;
@@ -56,6 +58,7 @@ public class EdcBuildPlugin implements Plugin<Project> {
             if (project.getState().getFailure() != null) {
                 return;
             }
+
             // apply the conventions
             of(
                     rootBuildScript(),
@@ -64,6 +67,7 @@ public class EdcBuildPlugin implements Plugin<Project> {
                     defaultDependencies(),
                     checkstyle(),
                     mavenPublishing(),
+                    mavenPublication(),
                     signing(),
                     mavenPom(),
                     jacoco(),
