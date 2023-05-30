@@ -10,6 +10,7 @@ repositories {
 }
 
 dependencies {
+    implementation(project(":runtime-metamodel"))
     implementation(project(":plugins:autodoc:autodoc-plugin"))
     implementation(project(":plugins:test-summary"))
     implementation(project(":plugins:module-names"))

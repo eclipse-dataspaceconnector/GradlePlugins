@@ -27,7 +27,7 @@ import static org.eclipse.edc.plugins.edcbuild.conventions.ConventionFunctions.r
  */
 class JavaConvention implements EdcConvention {
 
-    private static final int DEFAULT_JAVA_VERSION = 11;
+    private static final int DEFAULT_JAVA_VERSION = 17;
 
     @Override
     public void apply(Project target) {
@@ -53,4 +53,5 @@ class JavaConvention implements EdcConvention {
         javaPluginExt.withJavadocJar();
         javaPluginExt.withSourcesJar();
     }
+
 }

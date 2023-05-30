@@ -62,7 +62,7 @@ import static javax.tools.Diagnostic.Kind.NOTE;
         "org.eclipse.edc.runtime.metamodel.annotation.Requires",
         "org.eclipse.edc.runtime.metamodel.annotation.Inject",
 })
-@SupportedSourceVersion(SourceVersion.RELEASE_11)
+@SupportedSourceVersion(SourceVersion.RELEASE_17)
 @SupportedOptions({ EdcModuleProcessor.ID, EdcModuleProcessor.VERSION, EdcModuleProcessor.EDC_OUTPUTDIR_OVERRIDE })
 public class EdcModuleProcessor extends AbstractProcessor {
     public static final String VERSION = "edc.version";

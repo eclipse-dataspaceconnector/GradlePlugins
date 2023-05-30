@@ -9,6 +9,9 @@ dependencies {
     implementation(libs.plugin.openapi.merger)
     // needed for the OpenApiDataInvalidException:
     implementation(libs.plugin.openapi.merger.app)
+
+    implementation(project(":runtime-metamodel"))
+
 }
 
 gradlePlugin {

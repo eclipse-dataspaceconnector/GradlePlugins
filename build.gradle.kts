@@ -33,21 +33,10 @@ allprojects {
         }
     }
 
-    tasks.withType<Test> {
-        useJUnitPlatform()
-        testLogging {
-            showStandardStreams = true
-        }
-    }
-
     // configure checkstyle version
     checkstyle {
         toolVersion = "10.0"
         maxErrors = 0 // does not tolerate errors
-    }
-
-    repositories {
-        mavenCentral()
     }
 
     // let's not generate any reports because that is done from within the Github Actions workflow

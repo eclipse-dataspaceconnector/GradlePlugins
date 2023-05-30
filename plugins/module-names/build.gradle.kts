@@ -20,3 +20,7 @@ gradlePlugin {
         }
     }
 }
+
+dependencies {
+    implementation(project(":runtime-metamodel"))
+}
