@@ -2,7 +2,7 @@
 format.version = "1.1"
 
 [versions]
-jackson = "2.15.1"
+jackson = "2.15.2"
 jetbrainsAnnotation = "24.0.1"
 
 [libraries]
