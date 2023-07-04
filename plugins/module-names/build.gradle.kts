@@ -22,5 +22,5 @@ gradlePlugin {
 }
 
 dependencies {
-    implementation(project(":runtime-metamodel"))
+    implementation(libs.edc.runtime.metamodel)
 }

@@ -14,7 +14,6 @@
 
 package org.eclipse.edc.plugins.autodoc.core.processor.introspection;
 
-import org.eclipse.edc.runtime.metamodel.annotation.EdcSetting;
 import org.eclipse.edc.runtime.metamodel.annotation.Extension;
 import org.eclipse.edc.runtime.metamodel.annotation.ExtensionPoint;
 import org.eclipse.edc.runtime.metamodel.annotation.Inject;
@@ -80,7 +79,6 @@ public class ModuleIntrospector {
      *     <li>Are annotated with {@link Provides}</li>
      *     <li>Are annotated with {@link Requires}</li>
      *     <li>Have one or more fields annotated with {@link Inject}</li>
-     *     <li>Have one or more fields annotated with {@link EdcSetting}</li>
      *     <li>Have one or more methods annotated with {@link Provider}</li>
      * </ul>
      * <p>
@@ -92,14 +90,13 @@ public class ModuleIntrospector {
      */
     public Set<Element> getExtensionElements(RoundEnvironment environment) {
         var extensionClasses = environment.getElementsAnnotatedWith(Extension.class);
-        var settingsSymbolsDeprecated = environment.getElementsAnnotatedWith(EdcSetting.class);
         var settingsSymbols = environment.getElementsAnnotatedWith(Setting.class);
         var injectSymbols = environment.getElementsAnnotatedWith(Inject.class);
         var providerSymbols = environment.getElementsAnnotatedWith(Provider.class);
         var providesClasses = environment.getElementsAnnotatedWith(Provides.class);
         var requiresClasses = environment.getElementsAnnotatedWith(Requires.class);
 
-        var symbols = Stream.concat(settingsSymbols.stream(), settingsSymbolsDeprecated.stream());
+        var symbols = settingsSymbols.stream();
         symbols = Stream.concat(symbols, injectSymbols.stream());
         symbols = Stream.concat(symbols, providerSymbols.stream());
 

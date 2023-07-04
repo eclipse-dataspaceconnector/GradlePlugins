@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class AutodocPlugin implements Plugin<Project> {
 
-    private final List<String> exclusions = List.of("runtime-metamodel", "version-catalog", "edc-build", "module-names", "openapi-merger", "test-summary", "autodoc-plugin", "autodoc-processor");
+    private final List<String> exclusions = List.of("version-catalog", "edc-build", "module-names", "openapi-merger", "test-summary", "autodoc-plugin", "autodoc-processor");
 
     @Override
     public void apply(Project project) {

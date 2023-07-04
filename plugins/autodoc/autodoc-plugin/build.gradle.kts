@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":runtime-metamodel"))
+    implementation(libs.edc.runtime.metamodel)
     implementation(libs.jetbrains.annotations)
     implementation(libs.jackson.core)
     implementation(libs.jackson.annotations)

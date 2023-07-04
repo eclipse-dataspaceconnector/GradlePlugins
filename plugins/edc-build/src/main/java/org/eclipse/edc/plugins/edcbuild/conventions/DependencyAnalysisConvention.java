@@ -65,8 +65,7 @@ class DependencyAnalysisConvention implements EdcConvention {
                         "org.assertj:assertj-core",
                         "org.junit.jupiter:junit-jupiter-api",
                         "org.junit.jupiter:junit-jupiter-params",
-                        "org.mockito:mockito-core",
-                        "org.eclipse.edc:runtime-metamodel"
+                        "org.mockito:mockito-core"
                 ));
                 a.onIncorrectConfiguration(i -> i.exclude(
                         // some common dependencies are intentionally exported by core:common:connector-core for simplicity

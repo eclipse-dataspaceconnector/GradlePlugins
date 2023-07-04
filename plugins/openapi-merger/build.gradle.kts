@@ -10,7 +10,7 @@ dependencies {
     // needed for the OpenApiDataInvalidException:
     implementation(libs.plugin.openapi.merger.app)
 
-    implementation(project(":runtime-metamodel"))
+    implementation(libs.edc.runtime.metamodel)
 
 }
 

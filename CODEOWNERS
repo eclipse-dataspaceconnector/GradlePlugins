@@ -17,7 +17,6 @@ README.md @paullatzelsperger
 .github/ISSUE_TEMPLATE @paullatzelsperger
 .github/workflows/ @paullatzelsperger
 
-/runtime-metamodel/ @paullatzelsperger @jimmarino
 /plugins/autodoc/autodoc-core/ @paullatzelsperger @jimmarino
 /plugins/autodoc/autodoc-extension-test/ @paullatzelsperger @jimmarino
 /plugins/autodoc/autodoc-spi-test/ @paullatzelsperger @jimmarino

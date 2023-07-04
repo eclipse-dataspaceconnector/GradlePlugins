@@ -15,8 +15,6 @@
 package org.eclipse.edc.plugins.autodoc.core.processor.introspection;
 
 import org.eclipse.edc.plugins.autodoc.core.processor.compiler.AnnotationFunctions;
-import org.eclipse.edc.runtime.metamodel.annotation.EdcSetting;
-import org.eclipse.edc.runtime.metamodel.annotation.EdcSettingContext;
 import org.eclipse.edc.runtime.metamodel.annotation.Extension;
 import org.eclipse.edc.runtime.metamodel.annotation.Inject;
 import org.eclipse.edc.runtime.metamodel.annotation.Provider;
@@ -103,8 +101,7 @@ public class ExtensionIntrospector {
      * Resolves configuration points declared with {@link Setting}.
      */
     public List<ConfigurationSetting> resolveConfigurationSettings(Element element) {
-        return Stream.concat(getEnclosedElementsAnnotatedWith(element, EdcSetting.class),
-                        getEnclosedElementsAnnotatedWith(element, Setting.class))
+        return getEnclosedElementsAnnotatedWith(element, Setting.class)
                 .filter(VariableElement.class::isInstance)
                 .map(VariableElement.class::cast)
                 .map(this::createConfigurationSetting)
@@ -141,9 +138,6 @@ public class ExtensionIntrospector {
         var settingBuilder = ConfigurationSetting.Builder.newInstance().key(keyValue);
 
         var settingMirror = mirrorFor(Setting.class, settingElement);
-        if (settingMirror == null) { //todo: compatibility
-            settingMirror = mirrorFor(EdcSetting.class, settingElement);
-        }
 
         var description = attributeValue(String.class, "value", settingMirror, elementUtils);
         settingBuilder.description(description);
@@ -164,7 +158,7 @@ public class ExtensionIntrospector {
     }
 
     /**
-     * Resolves a configuration prefix specified by {@link EdcSettingContext} for a given EDC setting element or an empty string if there is none.
+     * Resolves a configuration prefix specified by {@link SettingContext} for a given EDC setting element or an empty string if there is none.
      */
     @NotNull
     private String resolveConfigurationPrefix(VariableElement edcSettingElement) {
@@ -173,9 +167,6 @@ public class ExtensionIntrospector {
             return "";
         }
         var contextMirror = mirrorFor(SettingContext.class, enclosingElement);
-        if (contextMirror == null) {
-            contextMirror = mirrorFor(EdcSettingContext.class, enclosingElement);
-        }
         return contextMirror != null ? attributeValue(String.class, "value", contextMirror, elementUtils) : "";
     }
 }

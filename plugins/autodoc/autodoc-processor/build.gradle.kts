@@ -16,5 +16,5 @@ plugins {
 }
 
 dependencies {
-    api(project(":runtime-metamodel"))
+    api(libs.edc.runtime.metamodel)
 }

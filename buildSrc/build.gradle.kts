@@ -6,7 +6,11 @@ group = "org.eclipse.edc"
 
 repositories {
     mavenCentral()
+    maven {
+        url = uri("https://oss.sonatype.org/content/repositories/snapshots/")
+    }
     gradlePluginPortal()
+    mavenLocal()
 }
 
 dependencies {
@@ -23,6 +27,9 @@ dependencies {
     implementation(libs.jackson.annotations)
     implementation(libs.jackson.databind)
     implementation(libs.jackson.datatypeJsr310)
+
+    api(libs.edc.runtime.metamodel)
+
 }
 
 gradlePlugin {
@@ -38,7 +45,6 @@ sourceSets {
     main {
         java {
             srcDirs(
-                "../runtime-metamodel/src/main",
                 "../plugins/autodoc/autodoc-plugin/src/main",
                 "../plugins/autodoc/autodoc-processor/src/main",
                 "../plugins/edc-build/src/main",

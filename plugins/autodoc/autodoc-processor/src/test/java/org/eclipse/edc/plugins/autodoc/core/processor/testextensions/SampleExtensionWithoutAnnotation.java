@@ -15,15 +15,15 @@
 package org.eclipse.edc.plugins.autodoc.core.processor.testextensions;
 
 import org.eclipse.edc.plugins.autodoc.core.processor.Constants;
-import org.eclipse.edc.runtime.metamodel.annotation.EdcSetting;
 import org.eclipse.edc.runtime.metamodel.annotation.Inject;
 import org.eclipse.edc.runtime.metamodel.annotation.Provider;
 import org.eclipse.edc.runtime.metamodel.annotation.Provides;
+import org.eclipse.edc.runtime.metamodel.annotation.Setting;
 import org.eclipse.edc.spi.system.ServiceExtension;
 
 @Provides(SomeOtherService.class)
 public class SampleExtensionWithoutAnnotation implements ServiceExtension {
-    @EdcSetting(value = Constants.TEST_SETTING_NAME, required = true)
+    @Setting(value = Constants.TEST_SETTING_NAME, required = true)
     public static final String TEST_SETTING = Constants.TEST_SETTING_KEY;
 
     @Inject

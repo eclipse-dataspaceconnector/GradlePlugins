@@ -10,12 +10,12 @@ repositories {
 }
 
 dependencies {
-    implementation(project(":runtime-metamodel"))
     implementation(project(":plugins:autodoc:autodoc-plugin"))
     implementation(project(":plugins:test-summary"))
     implementation(project(":plugins:module-names"))
     implementation(project(":plugins:openapi-merger"))
 
+    implementation(libs.edc.runtime.metamodel)
     implementation(libs.plugin.dependency.analysis)
     implementation(libs.plugin.nexus.publish)
     implementation(libs.plugin.checksum)
