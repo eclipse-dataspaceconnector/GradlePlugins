@@ -31,7 +31,8 @@ class JarConvention implements EdcConvention {
             var rootProjectPath = target.getRootProject().getProjectDir().getAbsolutePath();
             var licenseFile = Path.of(rootProjectPath, "LICENSE");
             var noticeFile = Path.of(rootProjectPath, "NOTICE.md");
-            jarTask.metaInf(metaInf -> metaInf.from(licenseFile.toString(), noticeFile.toString()));
+            var dependenciesFile = Path.of(rootProjectPath, "DEPENDENCIES");
+            jarTask.metaInf(metaInf -> metaInf.from(licenseFile.toString(), noticeFile.toString(), dependenciesFile.toString()));
         }
     }
 }
