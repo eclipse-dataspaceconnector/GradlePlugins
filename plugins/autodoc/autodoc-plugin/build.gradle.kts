@@ -9,6 +9,7 @@ dependencies {
     implementation(libs.jackson.annotations)
     implementation(libs.jackson.databind)
     implementation(libs.jackson.datatypeJsr310)
+    implementation(project(":plugins:autodoc:autodoc-converters"))
 }
 
 val group: String by project

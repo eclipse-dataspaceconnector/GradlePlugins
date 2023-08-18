@@ -1,20 +1,22 @@
 /*
- *  Copyright (c) 2022 Microsoft Corporation
+ * Copyright (c) 2023 Bayerische Motoren Werke Aktiengesellschaft (BMW AG)
  *
- *  This program and the accompanying materials are made available under the
- *  terms of the Apache License, Version 2.0 which is available at
- *  https://www.apache.org/licenses/LICENSE-2.0
+ * This program and the accompanying materials are made available under the
+ * terms of the Apache License, Version 2.0 which is available at
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
- *  SPDX-License-Identifier: Apache-2.0
+ * SPDX-License-Identifier: Apache-2.0
  *
- *  Contributors:
- *       Microsoft Corporation - initial API and implementation
+ * Contributors:
+ *       Bayerische Motoren Werke Aktiengesellschaft (BMW AG) - initial API and implementation
  *
  */
 
 package org.eclipse.edc.plugins.autodoc;
 
-import org.eclipse.edc.plugins.autodoc.merge.MergeManifestsTask;
+import org.eclipse.edc.plugins.autodoc.tasks.ManifestDownloadTask;
+import org.eclipse.edc.plugins.autodoc.tasks.MarkdownRendererTask;
+import org.eclipse.edc.plugins.autodoc.tasks.MergeManifestsTask;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 
@@ -25,7 +27,9 @@ import java.util.List;
  */
 public class AutodocPlugin implements Plugin<Project> {
 
-    private final List<String> exclusions = List.of("version-catalog", "edc-build", "module-names", "openapi-merger", "test-summary", "autodoc-plugin", "autodoc-processor");
+    public static final String GROUP_NAME = "autodoc";
+    public static final String AUTODOC_TASK_NAME = "autodoc";
+    private final List<String> exclusions = List.of("version-catalog", "edc-build", "module-names", "openapi-merger", "test-summary", "autodoc-plugin", "autodoc-processor", "autodoc-converters");
 
     @Override
     public void apply(Project project) {
@@ -36,9 +40,9 @@ public class AutodocPlugin implements Plugin<Project> {
         }
 
         // registers a "named" task, that does nothing, except depend on the compileTask, which then runs the annotation processor
-        project.getTasks().register("autodoc", t -> t.dependsOn("compileJava"));
-        project.getTasks().register("mergeManifest", MergeManifestsTask.class, t -> t.dependsOn("autodoc"));
-
+        project.getTasks().register(AUTODOC_TASK_NAME, t -> t.dependsOn("compileJava").setGroup(GROUP_NAME));
+        project.getTasks().register(MergeManifestsTask.NAME, MergeManifestsTask.class, t -> t.dependsOn(AUTODOC_TASK_NAME).setGroup(GROUP_NAME));
+        project.getTasks().register(MarkdownRendererTask.NAME, MarkdownRendererTask.class, t -> t.dependsOn(AUTODOC_TASK_NAME).setGroup(GROUP_NAME));
+        project.getTasks().register(ManifestDownloadTask.NAME, ManifestDownloadTask.class, t -> t.setGroup(GROUP_NAME));
     }
-
 }

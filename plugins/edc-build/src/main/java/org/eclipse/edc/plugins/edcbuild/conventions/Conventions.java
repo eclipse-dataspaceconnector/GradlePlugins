@@ -52,8 +52,8 @@ public class Conventions {
         return new JavaConvention();
     }
 
-    public static EdcConvention dependencyAnalysis() {
-        return new DependencyAnalysisConvention();
+    public static EdcConvention allDependencies() {
+        return new AllDependenciesConvention();
     }
 
     public static EdcConvention tests() {

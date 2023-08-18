@@ -12,13 +12,14 @@
  *
  */
 
-package org.eclipse.edc.plugins.autodoc.merge;
+package org.eclipse.edc.plugins.autodoc.tasks;
 
 import org.eclipse.edc.plugins.autodoc.AutodocExtension;
 import org.gradle.api.DefaultTask;
 import org.gradle.api.GradleException;
 import org.gradle.api.tasks.OutputFile;
 import org.gradle.api.tasks.TaskAction;
+import org.gradle.util.internal.GFileUtils;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -29,6 +30,7 @@ import java.util.Objects;
  */
 public class MergeManifestsTask extends DefaultTask {
 
+    public static final String NAME = "mergeManifests";
     private static final String MERGED_MANIFEST_FILENAME = "manifest.json";
     private final JsonFileAppender appender;
     private File destinationFile;
@@ -52,11 +54,21 @@ public class MergeManifestsTask extends DefaultTask {
             throw new GradleException("destinationFile must be configured but was null!");
         }
 
-
         if (sourceFile.exists()) {
             appender.append(destination, sourceFile);
         } else {
             getProject().getLogger().lifecycle("Skip project [{}] - no manifest file found", sourceFile);
+        }
+
+        // if an additional input directory was specified, lets include the files in it.
+        if (autodocExt.getAdditionalInputDirectory().isPresent() &&
+                autodocExt.getAdditionalInputDirectory().get().exists() &&
+                getProject().equals(getProject().getRootProject()) &&
+                autodocExt.isIncludeTransitive()) {
+            var dir = autodocExt.getAdditionalInputDirectory().get();
+            var files = GFileUtils.listFiles(dir, new String[]{ "json" }, false);
+            getLogger().lifecycle("Appending [{}] additional JSON files to the merged manifest", files.size());
+            files.forEach(f -> appender.append(destination, f));
         }
 
     }

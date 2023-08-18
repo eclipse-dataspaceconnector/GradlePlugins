@@ -40,7 +40,7 @@ class DefaultDependencyConvention implements EdcConvention {
     private static final String EDC_GROUP_ID = "org.eclipse.edc";
     private static final String DEFAULT_JETBRAINS_ANNOTATION_VERSION = "24.0.1";
     private static final String DEFAULT_JACKSON_VERSION = "2.14.2";
-    private static final String DEFAULT_METAMODEL_VERSION = "0.1.4-SNAPSHOT";
+    private static final String DEFAULT_METAMODEL_VERSION = "0.2.1-SNAPSHOT";
     private static final String DEFAULT_MOCKITO_VERSION = "5.2.0";
     private static final String DEFAULT_ASSERTJ_VERSION = "3.23.1";
     private static final String DEFAULT_JUPITER_VERSION = "5.9.2";

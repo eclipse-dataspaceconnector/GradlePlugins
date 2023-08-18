@@ -14,11 +14,13 @@
 
 package org.eclipse.edc.plugins.autodoc;
 
+import org.eclipse.edc.plugins.autodoc.tasks.MergeManifestsTask;
 import org.gradle.api.Project;
 import org.gradle.testfixtures.ProjectBuilder;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.eclipse.edc.plugins.autodoc.AutodocPlugin.AUTODOC_TASK_NAME;
 
 
 public class AutodocPluginTest {
@@ -30,7 +32,7 @@ public class AutodocPluginTest {
 
         // Verify the result
         var tasks = project.getTasks();
-        assertThat(tasks.findByName("autodoc")).isNotNull();
-        assertThat(tasks.findByName("mergeManifest")).isNotNull();
+        assertThat(tasks.findByName(AUTODOC_TASK_NAME)).isNotNull();
+        assertThat(tasks.findByName(MergeManifestsTask.NAME)).isNotNull();
     }
 }

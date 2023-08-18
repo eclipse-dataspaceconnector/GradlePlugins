@@ -12,7 +12,7 @@
  *
  */
 
-package org.eclipse.edc.plugins.autodoc.merge;
+package org.eclipse.edc.plugins.autodoc.tasks;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

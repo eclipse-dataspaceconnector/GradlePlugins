@@ -1,0 +1,163 @@
+[
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          "test-category"
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.spi.system.Hostname"
+          },
+          {
+            "service": "org.eclipse.edc.spi.message.RemoteMessageDispatcherRegistry"
+          },
+          {
+            "service": "org.eclipse.edc.spi.command.CommandHandlerRegistry"
+          },
+          {
+            "service": "org.eclipse.edc.spi.agent.ParticipantAgentService"
+          },
+          {
+            "service": "org.eclipse.edc.policy.engine.spi.RuleBindingRegistry"
+          },
+          {
+            "service": "org.eclipse.edc.policy.engine.spi.PolicyEngine"
+          },
+          {
+            "service": "org.eclipse.edc.spi.event.EventRouter"
+          },
+          {
+            "service": "org.eclipse.edc.spi.system.health.HealthCheckService"
+          },
+          {
+            "service": "org.eclipse.edc.transform.spi.TypeTransformerRegistry"
+          },
+          {
+            "service": "org.eclipse.edc.validator.spi.JsonObjectValidatorRegistry"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.spi.system.ExecutorInstrumentation",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.PrivateKeyResolver",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.core.event.EventExecutorServiceContainer",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.core.system.health.check.liveness-period",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.core.system.health.check.startup-period",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.core.system.health.check.readiness-period",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.core.system.health.check.threadpool-size",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.hostname",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.agent.identity.key",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "name": "Core Services",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.core.CoreServicesExtension"
+      },
+      {
+        "categories": [],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.transaction.spi.TransactionContext"
+          },
+          {
+            "service": "org.eclipse.edc.transaction.datasource.spi.DataSourceRegistry"
+          },
+          {
+            "service": "org.eclipse.edc.spi.system.ExecutorInstrumentation"
+          },
+          {
+            "service": "org.eclipse.edc.connector.core.event.EventExecutorServiceContainer"
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.Vault"
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.PrivateKeyResolver"
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.CertificateResolver"
+          },
+          {
+            "service": "org.eclipse.edc.spi.http.EdcHttpClient"
+          },
+          {
+            "service": "okhttp3.OkHttpClient"
+          },
+          {
+            "service": "dev.failsafe.RetryPolicy<T>"
+          }
+        ],
+        "references": [
+          {
+            "service": "okhttp3.EventListener",
+            "required": false
+          }
+        ],
+        "configuration": [],
+        "name": "CoreDefaultServicesExtension",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.core.CoreDefaultServicesExtension"
+      }
+    ],
+    "extensionPoints": [
+      {
+        "service": "foo.service"
+      },
+      {
+        "service": "org.test.bar.BarService"
+      }
+    ],
+    "modulePath": "org.eclipse.edc:connector-core",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  }
+]

@@ -14,7 +14,6 @@ repositories {
 }
 
 dependencies {
-    implementation(libs.plugin.dependency.analysis)
     implementation(libs.plugin.nexus.publish)
     implementation(libs.plugin.checksum)
     implementation(libs.plugin.swagger.generator)
@@ -29,7 +28,7 @@ dependencies {
     implementation(libs.jackson.datatypeJsr310)
 
     api(libs.edc.runtime.metamodel)
-
+    implementation(libs.markdown.gen)
 }
 
 gradlePlugin {
@@ -46,7 +45,7 @@ sourceSets {
         java {
             srcDirs(
                 "../plugins/autodoc/autodoc-plugin/src/main",
-                "../plugins/autodoc/autodoc-processor/src/main",
+                "../plugins/autodoc/autodoc-converters/src/main",
                 "../plugins/edc-build/src/main",
                 "../plugins/module-names/src/main",
                 "../plugins/openapi-merger/src/main",

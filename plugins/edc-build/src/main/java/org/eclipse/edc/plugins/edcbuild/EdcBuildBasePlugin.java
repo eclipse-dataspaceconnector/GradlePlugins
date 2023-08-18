@@ -14,7 +14,6 @@
 
 package org.eclipse.edc.plugins.edcbuild;
 
-import com.autonomousapps.DependencyAnalysisPlugin;
 import io.github.gradlenexus.publishplugin.NexusPublishPlugin;
 import org.eclipse.edc.plugins.autodoc.AutodocPlugin;
 import org.eclipse.edc.plugins.modulenames.ModuleNamesPlugin;
@@ -51,7 +50,6 @@ public class EdcBuildBasePlugin implements Plugin<Project> {
             target.getPlugins().apply(NexusPublishPlugin.class);
             target.getPlugins().apply(OpenApiMergerPlugin.class);
             target.getPlugins().apply(ModuleNamesPlugin.class);
-            target.getPlugins().apply(DependencyAnalysisPlugin.class);
         }
     }
 

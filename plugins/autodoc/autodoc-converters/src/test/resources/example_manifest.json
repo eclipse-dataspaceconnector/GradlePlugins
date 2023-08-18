@@ -1,0 +1,4677 @@
+[
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager"
+          },
+          {
+            "service": "java.time.Clock"
+          },
+          {
+            "service": "org.eclipse.edc.spi.telemetry.Telemetry"
+          }
+        ],
+        "references": [],
+        "configuration": [],
+        "name": "Boot Services",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.boot.BootServicesExtension"
+      }
+    ],
+    "extensionPoints": [
+    ],
+    "modulePath": "org.eclipse.edc:boot",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.spi.system.Hostname"
+          },
+          {
+            "service": "org.eclipse.edc.spi.message.RemoteMessageDispatcherRegistry"
+          },
+          {
+            "service": "org.eclipse.edc.spi.command.CommandHandlerRegistry"
+          },
+          {
+            "service": "org.eclipse.edc.spi.agent.ParticipantAgentService"
+          },
+          {
+            "service": "org.eclipse.edc.policy.engine.spi.RuleBindingRegistry"
+          },
+          {
+            "service": "org.eclipse.edc.policy.engine.spi.PolicyEngine"
+          },
+          {
+            "service": "org.eclipse.edc.spi.event.EventRouter"
+          },
+          {
+            "service": "org.eclipse.edc.spi.system.health.HealthCheckService"
+          },
+          {
+            "service": "org.eclipse.edc.transform.spi.TypeTransformerRegistry"
+          },
+          {
+            "service": "org.eclipse.edc.validator.spi.JsonObjectValidatorRegistry"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.spi.system.ExecutorInstrumentation",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.PrivateKeyResolver",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.core.event.EventExecutorServiceContainer",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.core.system.health.check.liveness-period",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.core.system.health.check.startup-period",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.core.system.health.check.readiness-period",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.core.system.health.check.threadpool-size",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.hostname",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.agent.identity.key",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "name": "Core Services",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.core.CoreServicesExtension"
+      },
+      {
+        "categories": [],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.transaction.spi.TransactionContext"
+          },
+          {
+            "service": "org.eclipse.edc.transaction.datasource.spi.DataSourceRegistry"
+          },
+          {
+            "service": "org.eclipse.edc.spi.system.ExecutorInstrumentation"
+          },
+          {
+            "service": "org.eclipse.edc.connector.core.event.EventExecutorServiceContainer"
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.Vault"
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.PrivateKeyResolver"
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.CertificateResolver"
+          },
+          {
+            "service": "org.eclipse.edc.spi.http.EdcHttpClient"
+          },
+          {
+            "service": "okhttp3.OkHttpClient"
+          },
+          {
+            "service": "dev.failsafe.RetryPolicy<T>"
+          }
+        ],
+        "references": [
+          {
+            "service": "okhttp3.EventListener",
+            "required": false
+          }
+        ],
+        "configuration": [],
+        "name": "CoreDefaultServicesExtension",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.core.CoreDefaultServicesExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:connector-core",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      "",
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.catalog.spi.DataServiceRegistry"
+          },
+          {
+            "service": "org.eclipse.edc.catalog.spi.DistributionResolver"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.connector.dataplane.selector.spi.store.DataPlaneInstanceStore",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Catalog Default Services",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.catalog.CatalogDefaultServicesExtension"
+      },
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.catalog.spi.DatasetResolver"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.offer.ContractDefinitionResolver",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.asset.AssetIndex",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.policy.spi.store.PolicyDefinitionStore",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.catalog.spi.DistributionResolver",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.query.CriterionToAssetPredicateConverter",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Catalog Core",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.catalog.CatalogCoreExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:catalog-core",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      "",
+      "",
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.negotiation.store.ContractNegotiationStore",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.command.CommandHandlerRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Contract Negotiation command handlers",
+        "type": "extension",
+        "overview": " Contract Negotiation Default Services Extension\n",
+        "className": "org.eclipse.edc.connector.contract.ContractNegotiationCommandExtension"
+      },
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.validation.ContractValidationService"
+          },
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.negotiation.ConsumerContractNegotiationManager"
+          },
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.negotiation.ProviderContractNegotiationManager"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.spi.asset.AssetIndex",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.message.RemoteMessageDispatcherRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.negotiation.store.ContractNegotiationStore",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.agent.ParticipantAgentService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.policy.engine.spi.PolicyEngine",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.policy.spi.store.PolicyDefinitionStore",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.monitor.Monitor",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.telemetry.Telemetry",
+            "required": true
+          },
+          {
+            "service": "java.time.Clock",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.event.EventRouter",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.policy.engine.spi.RuleBindingRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.protocol.ProtocolWebhook",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.offer.ContractDefinitionResolver",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.negotiation.observe.ContractNegotiationObservable",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.negotiation.ContractNegotiationPendingGuard",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.system.ExecutorInstrumentation",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.negotiation.state-machine.iteration-wait-millis",
+            "required": false,
+            "type": "long",
+            "description": "the iteration wait time in milliseconds in the negotiation state machine. Default value 1000"
+          },
+          {
+            "key": "edc.negotiation.consumer.state-machine.batch-size",
+            "required": false,
+            "type": "int",
+            "description": "the batch size in the consumer negotiation state machine. Default value 20"
+          },
+          {
+            "key": "edc.negotiation.provider.state-machine.batch-size",
+            "required": false,
+            "type": "int",
+            "description": "the batch size in the provider negotiation state machine. Default value 20"
+          },
+          {
+            "key": "edc.negotiation.consumer.send.retry.limit",
+            "required": false,
+            "type": "int",
+            "description": "how many times a specific operation must be tried before terminating the consumer negotiation with error"
+          },
+          {
+            "key": "edc.negotiation.provider.send.retry.limit",
+            "required": false,
+            "type": "int",
+            "description": "how many times a specific operation must be tried before terminating the provider negotiation with error"
+          },
+          {
+            "key": "edc.negotiation.consumer.send.retry.base-delay.ms",
+            "required": false,
+            "type": "long",
+            "description": "The base delay for the consumer negotiation retry mechanism in millisecond"
+          },
+          {
+            "key": "edc.negotiation.provider.send.retry.base-delay.ms",
+            "required": false,
+            "type": "long",
+            "description": "The base delay for the provider negotiation retry mechanism in millisecond"
+          }
+        ],
+        "name": "Contract Core",
+        "type": "extension",
+        "overview": " Contract Negotiation Default Services Extension\n",
+        "className": "org.eclipse.edc.connector.contract.ContractCoreExtension"
+      },
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.offer.ContractDefinitionResolver"
+          },
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.negotiation.observe.ContractNegotiationObservable"
+          },
+          {
+            "service": "org.eclipse.edc.connector.policy.spi.store.PolicyArchive"
+          },
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.negotiation.ContractNegotiationPendingGuard"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.offer.store.ContractDefinitionStore",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.policy.engine.spi.PolicyEngine",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.policy.spi.store.PolicyDefinitionStore",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.negotiation.store.ContractNegotiationStore",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Contract Negotiation Default Services",
+        "type": "extension",
+        "overview": " Contract Negotiation Default Services Extension\n",
+        "className": "org.eclipse.edc.connector.contract.ContractNegotiationDefaultServicesExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:contract-core",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.spi.asset.AssetService"
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.catalog.CatalogService"
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.catalog.CatalogProtocolService"
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.contractagreement.ContractAgreementService"
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.contractdefinition.ContractDefinitionService"
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.contractnegotiation.ContractNegotiationService"
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.contractnegotiation.ContractNegotiationProtocolService"
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.policydefinition.PolicyDefinitionService"
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.transferprocess.TransferProcessService"
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.transferprocess.TransferProcessProtocolService"
+          }
+        ],
+        "references": [
+          {
+            "service": "java.time.Clock",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.monitor.Monitor",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.event.EventRouter",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.message.RemoteMessageDispatcherRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.asset.AssetIndex",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.offer.store.ContractDefinitionStore",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.negotiation.store.ContractNegotiationStore",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.negotiation.ConsumerContractNegotiationManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.policy.spi.store.PolicyDefinitionStore",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.store.TransferProcessStore",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.TransferProcessManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.transaction.spi.TransactionContext",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.validation.ContractValidationService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.negotiation.observe.ContractNegotiationObservable",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.observe.TransferProcessObservable",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.telemetry.Telemetry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.agent.ParticipantAgentService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.catalog.spi.DataServiceRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.catalog.spi.DatasetResolver",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.command.CommandHandlerRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Control Plane Services",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.service.ControlPlaneServicesExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:control-plane-aggregate-services",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.spi.asset.AssetIndex"
+          },
+          {
+            "service": "org.eclipse.edc.spi.asset.DataAddressResolver"
+          },
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.offer.store.ContractDefinitionStore"
+          },
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.negotiation.store.ContractNegotiationStore"
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.store.TransferProcessStore"
+          },
+          {
+            "service": "org.eclipse.edc.connector.policy.spi.store.PolicyDefinitionStore"
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.callback.CallbackRegistry"
+          },
+          {
+            "service": "org.eclipse.edc.spi.query.CriterionToAssetPredicateConverter"
+          }
+        ],
+        "references": [],
+        "configuration": [],
+        "name": "Control Plane Default Services",
+        "type": "extension",
+        "overview": " Provides default service implementations for fallback\n",
+        "className": "org.eclipse.edc.connector.ControlPlaneDefaultServicesExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:control-plane-core",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      "",
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.store.TransferProcessStore",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "TransferProcessCommandExtension",
+        "type": "extension",
+        "overview": " Provides core data transfer services to the system.\n",
+        "className": "org.eclipse.edc.connector.transfer.TransferProcessCommandExtension"
+      },
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.TransferProcessManager"
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.edr.EndpointDataReferenceReceiverRegistry"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.store.TransferProcessStore",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.flow.DataFlowManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.status.StatusCheckerRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.provision.ResourceManifestGenerator",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.provision.ProvisionManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.observe.TransferProcessObservable",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.policy.spi.store.PolicyArchive",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.command.CommandHandlerRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.message.RemoteMessageDispatcherRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.asset.DataAddressResolver",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.Vault",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.event.EventRouter",
+            "required": true
+          },
+          {
+            "service": "java.time.Clock",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.telemetry.Telemetry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.transform.spi.TypeTransformerRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.protocol.ProtocolWebhook",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.TransferProcessPendingGuard",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.transfer.state-machine.iteration-wait-millis",
+            "required": false,
+            "type": "long",
+            "description": "the iteration wait time in milliseconds in the transfer process state machine. Default value 1000"
+          },
+          {
+            "key": "edc.transfer.state-machine.batch-size",
+            "required": false,
+            "type": "int",
+            "description": "the batch size in the transfer process state machine. Default value 20"
+          },
+          {
+            "key": "edc.transfer.send.retry.limit",
+            "required": false,
+            "type": "int",
+            "description": "how many times a specific operation must be tried before terminating the transfer with error"
+          },
+          {
+            "key": "edc.transfer.send.retry.base-delay.ms",
+            "required": false,
+            "type": "long",
+            "description": "The base delay for the transfer retry mechanism in millisecond"
+          }
+        ],
+        "name": "Transfer Core",
+        "type": "extension",
+        "overview": " Provides core data transfer services to the system.\n",
+        "className": "org.eclipse.edc.connector.transfer.TransferCoreExtension"
+      },
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.flow.DataFlowManager"
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.provision.ResourceManifestGenerator"
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.status.StatusCheckerRegistry"
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.provision.ProvisionManager"
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.observe.TransferProcessObservable"
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.TransferProcessPendingGuard"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.policy.engine.spi.PolicyEngine",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Transfer Process Default Services",
+        "type": "extension",
+        "overview": " Provides core data transfer services to the system.\n",
+        "className": "org.eclipse.edc.connector.transfer.TransferProcessDefaultServicesExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:transfer-core",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      "",
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.dataplane.spi.manager.DataPlaneManager"
+          },
+          {
+            "service": "org.eclipse.edc.connector.dataplane.spi.pipeline.PipelineService"
+          },
+          {
+            "service": "org.eclipse.edc.connector.dataplane.spi.pipeline.DataTransferExecutorServiceContainer"
+          },
+          {
+            "service": "org.eclipse.edc.connector.dataplane.spi.registry.TransferServiceRegistry"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.connector.dataplane.framework.registry.TransferServiceSelectionStrategy",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.dataplane.spi.store.DataPlaneStore",
+            "required": false
+          },
+          {
+            "service": "org.eclipse.edc.connector.api.client.spi.transferprocess.TransferProcessApiClient",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.system.ExecutorInstrumentation",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.telemetry.Telemetry",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.dataplane.queue.capacity",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.dataplane.workers",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.dataplane.wait",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.dataplane.transfer.threads",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "name": "Data Plane Framework",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.dataplane.framework.DataPlaneFrameworkExtension"
+      },
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.api.client.spi.transferprocess.TransferProcessApiClient"
+          },
+          {
+            "service": "org.eclipse.edc.connector.dataplane.framework.registry.TransferServiceSelectionStrategy"
+          }
+        ],
+        "references": [],
+        "configuration": [],
+        "name": "Data Plane Framework Default Services",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.dataplane.framework.DataPlaneDefaultServicesExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:data-plane-framework",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.dataplane.selector.spi.store.DataPlaneInstanceStore"
+          }
+        ],
+        "references": [],
+        "configuration": [],
+        "name": "DataPlaneSelectorDefaultServicesExtension",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.dataplane.selector.core.DataPlaneSelectorDefaultServicesExtension"
+      },
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.dataplane.selector.spi.DataPlaneSelector"
+          },
+          {
+            "service": "org.eclipse.edc.connector.dataplane.selector.spi.strategy.SelectionStrategyRegistry"
+          },
+          {
+            "service": "org.eclipse.edc.connector.dataplane.selector.spi.DataPlaneSelectorService"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.connector.dataplane.selector.spi.store.DataPlaneInstanceStore",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.transaction.spi.TransactionContext",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "DataPlane core selector",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.dataplane.selector.core.DataPlaneSelectorExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:data-plane-selector-core",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.protocol.dsp.spi.dispatcher.DspHttpRemoteMessageDispatcher"
+          },
+          {
+            "service": "org.eclipse.edc.protocol.dsp.spi.serialization.JsonLdRemoteMessageSerializer"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.spi.message.RemoteMessageDispatcherRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.http.EdcHttpClient",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.iam.IdentityService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.transform.spi.TypeTransformerRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.jsonld.spi.JsonLd",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.iam.TokenDecorator",
+            "required": false
+          },
+          {
+            "service": "org.eclipse.edc.policy.engine.spi.PolicyEngine",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Dataspace Protocol Core Extension",
+        "type": "extension",
+        "overview": " Provides an implementation of {@link DspHttpRemoteMessageDispatcher} to support sending dataspace\n protocol messages. The dispatcher can then be used by other extensions to add support for\n specific message types.\n",
+        "className": "org.eclipse.edc.protocol.dsp.DspHttpCoreExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:dsp-http-core",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.protocol.dsp.api.configuration.DspApiConfiguration"
+          },
+          {
+            "service": "org.eclipse.edc.spi.protocol.ProtocolWebhook"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.web.spi.WebService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.web.spi.WebServer",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.web.spi.configuration.WebServiceConfigurer",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.jsonld.spi.JsonLd",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.transform.spi.TypeTransformerRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Dataspace Protocol API Configuration Extension",
+        "type": "extension",
+        "overview": " Provides the configuration for the Dataspace Protocol API context. Creates the API context\n using {@link #DEFAULT_PROTOCOL_PORT} and {@link #DEFAULT_PROTOCOL_API_PATH}, if no respective\n settings are provided. Configures the API context to allow Jakarta JSON-API types as endpoint\n parameters.\n",
+        "className": "org.eclipse.edc.protocol.dsp.api.configuration.DspApiConfigurationExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:dsp-api-configuration",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.jsonld.spi.JsonLd"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.jsonld.http.enabled",
+            "required": false,
+            "type": "boolean",
+            "description": "If set enable http json-ld document resolution"
+          },
+          {
+            "key": "edc.jsonld.https.enabled",
+            "required": false,
+            "type": "boolean",
+            "description": "If set enable https json-ld document resolution"
+          }
+        ],
+        "name": "JSON-LD Extension",
+        "type": "extension",
+        "overview": " Adds support for working with JSON-LD. Provides an ObjectMapper that works with Jakarta JSON-P\n types through the TypeManager context {@link CoreConstants#JSON_LD} and a registry\n for {@link JsonLdTransformer}s. The module also offers\n functions for working with JSON-LD structures.\n",
+        "className": "org.eclipse.edc.jsonld.JsonLdExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:json-ld",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.web.spi.WebServer",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.web.spi.configuration.WebServiceConfigurer",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.dataplane.spi.manager.DataPlaneManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.web.spi.WebService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.http.EdcHttpClient",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.api.control.configuration.ControlApiConfiguration",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.dataplane.token.validation.endpoint",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "name": "Data Plane API",
+        "type": "extension",
+        "overview": " This extension provides the Data Plane API:\n - Control API: set of endpoints to trigger/monitor/cancel data transfers that should be accessible only from the Control Plane.\n - Public API: generic endpoint open to other participants of the Dataspace and used to proxy a data request to the actual data source.\n",
+        "className": "org.eclipse.edc.connector.dataplane.api.DataPlaneApiExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:data-plane-api",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.dataplane.spi.client.DataPlaneClient"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.connector.dataplane.spi.manager.DataPlaneManager",
+            "required": false
+          },
+          {
+            "service": "org.eclipse.edc.connector.dataplane.selector.spi.client.DataPlaneSelectorClient",
+            "required": false
+          },
+          {
+            "service": "org.eclipse.edc.spi.http.EdcHttpClient",
+            "required": false
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.dataplane.client.selector.strategy",
+            "required": false,
+            "type": "string",
+            "description": "Defines strategy for Data Plane instance selection in case Data Plane is not embedded in current runtime"
+          }
+        ],
+        "name": "Data Plane Client",
+        "type": "extension",
+        "overview": " This extension provides the Data Plane API:\n - Control API: set of endpoints to trigger/monitor/cancel data transfers that should be accessible only from the Control Plane.\n - Public API: generic endpoint open to other participants of the Dataspace and used to proxy a data request to the actual data source.\n",
+        "className": "org.eclipse.edc.connector.dataplane.client.DataPlaneClientExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:data-plane-client",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.dataplane.http.spi.HttpRequestParamsProvider"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.spi.http.EdcHttpClient",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.dataplane.spi.pipeline.PipelineService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.dataplane.spi.pipeline.DataTransferExecutorServiceContainer",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.Vault",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.dataplane.http.sink.partition.size",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "name": "Data Plane HTTP",
+        "type": "extension",
+        "overview": " Provides support for reading data from an HTTP endpoint and sending data to an HTTP endpoint.\n",
+        "className": "org.eclipse.edc.connector.dataplane.http.DataPlaneHttpExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:data-plane-http",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "java.time.Clock",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.dataplane.http.spi.HttpRequestParamsProvider",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.Vault",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.PrivateKeyResolver",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.iam.oauth2.spi.client.Oauth2Client",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Data Plane HTTP OAuth2",
+        "type": "extension",
+        "overview": " Provides support for adding OAuth2 authentication to http data transfer\n",
+        "className": "org.eclipse.edc.connector.dataplane.http.oauth2.DataPlaneHttpOauth2Extension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:data-plane-http-oauth2-core",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.connector.dataplane.spi.pipeline.DataTransferExecutorServiceContainer",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.dataplane.spi.pipeline.PipelineService",
+            "required": true
+          },
+          {
+            "service": "java.time.Clock",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Data Plane Kafka",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.dataplane.kafka.DataPlaneKafkaExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:data-plane-kafka",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.web.spi.WebService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.dataplane.selector.spi.DataPlaneSelectorService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.api.management.configuration.ManagementApiConfiguration",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.api.management.configuration.transform.ManagementApiTypeTransformerRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "DataPlane selector API",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.dataplane.selector.DataPlaneSelectorApiExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:data-plane-selector-api",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.dataplane.selector.spi.client.DataPlaneSelectorClient"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.connector.dataplane.selector.spi.DataPlaneSelectorService",
+            "required": false
+          },
+          {
+            "service": "org.eclipse.edc.spi.http.EdcHttpClient",
+            "required": false
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.transform.spi.TypeTransformerRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.dpf.selector.url",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "name": "DataPlane instance client",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.dataplane.selector.DataPlaneInstanceClientExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:data-plane-selector-client",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [],
+    "extensionPoints": [
+      {
+        "service": "org.eclipse.edc.api.auth.spi.AuthenticationService"
+      }
+    ],
+    "modulePath": "org.eclipse.edc:auth-spi",
+    "version": "0.2.1-SNAPSHOT",
+    "name": "Auth services"
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [],
+    "extensionPoints": [
+      {
+        "service": "org.eclipse.edc.spi.monitor.Monitor"
+      },
+      {
+        "service": "org.eclipse.edc.spi.asset.AssetIndex"
+      },
+      {
+        "service": "org.eclipse.edc.spi.asset.DataAddressResolver"
+      },
+      {
+        "service": "org.eclipse.edc.spi.security.CertificateResolver"
+      },
+      {
+        "service": "org.eclipse.edc.spi.security.PrivateKeyResolver"
+      },
+      {
+        "service": "org.eclipse.edc.spi.security.Vault"
+      },
+      {
+        "service": "org.eclipse.edc.spi.message.RemoteMessageDispatcherRegistry"
+      },
+      {
+        "service": "org.eclipse.edc.spi.system.health.HealthCheckService"
+      },
+      {
+        "service": "org.eclipse.edc.spi.system.ExecutorInstrumentation"
+      },
+      {
+        "service": "org.eclipse.edc.spi.iam.PublicKeyResolver"
+      },
+      {
+        "service": "org.eclipse.edc.spi.iam.IdentityService"
+      },
+      {
+        "service": "org.eclipse.edc.spi.command.CommandHandlerRegistry"
+      },
+      {
+        "service": "org.eclipse.edc.spi.event.EventRouter"
+      }
+    ],
+    "modulePath": "org.eclipse.edc:core-spi",
+    "version": "0.2.1-SNAPSHOT",
+    "name": "Core services"
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [],
+    "extensionPoints": [
+      {
+        "service": "org.eclipse.edc.iam.did.spi.resolution.DidResolverRegistry"
+      },
+      {
+        "service": "org.eclipse.edc.iam.did.spi.resolution.DidPublicKeyResolver"
+      },
+      {
+        "service": "org.eclipse.edc.iam.did.spi.store.DidStore"
+      },
+      {
+        "service": "org.eclipse.edc.iam.did.spi.credentials.CredentialsVerifier"
+      }
+    ],
+    "modulePath": "org.eclipse.edc:identity-did-spi",
+    "version": "0.2.1-SNAPSHOT",
+    "name": "IAM DID services"
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:jwt-spi",
+    "version": "0.2.1-SNAPSHOT",
+    "name": "JTW services"
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [],
+    "extensionPoints": [
+      {
+        "service": "org.eclipse.edc.iam.oauth2.spi.Oauth2ValidationRulesRegistry"
+      },
+      {
+        "service": "org.eclipse.edc.iam.oauth2.spi.Oauth2JwtDecoratorRegistry"
+      },
+      {
+        "service": "org.eclipse.edc.iam.oauth2.spi.CredentialsRequestAdditionalParametersProvider"
+      },
+      {
+        "service": "org.eclipse.edc.iam.oauth2.spi.client.Oauth2Client"
+      }
+    ],
+    "modulePath": "org.eclipse.edc:oauth2-spi",
+    "version": "0.2.1-SNAPSHOT",
+    "name": "OAuth2 services"
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [],
+    "extensionPoints": [
+      {
+        "service": "org.eclipse.edc.policy.engine.spi.PolicyEngine"
+      },
+      {
+        "service": "org.eclipse.edc.policy.engine.spi.RuleBindingRegistry"
+      }
+    ],
+    "modulePath": "org.eclipse.edc:policy-engine-spi",
+    "version": "0.2.1-SNAPSHOT",
+    "name": "Policy Engine services"
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [],
+    "extensionPoints": [
+      {
+        "service": "org.eclipse.edc.transaction.datasource.spi.DataSourceRegistry"
+      }
+    ],
+    "modulePath": "org.eclipse.edc:transaction-datasource-spi",
+    "version": "0.2.1-SNAPSHOT",
+    "name": "DataSource services"
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [],
+    "extensionPoints": [
+      {
+        "service": "org.eclipse.edc.transaction.spi.TransactionContext"
+      }
+    ],
+    "modulePath": "org.eclipse.edc:transaction-spi",
+    "version": "0.2.1-SNAPSHOT",
+    "name": "Transactional context services"
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [],
+    "extensionPoints": [
+      {
+        "service": "org.eclipse.edc.web.spi.configuration.WebServiceConfigurer"
+      },
+      {
+        "service": "org.eclipse.edc.web.spi.WebServer"
+      },
+      {
+        "service": "org.eclipse.edc.web.spi.WebService"
+      },
+      {
+        "service": "org.eclipse.edc.web.spi.validation.InterceptorFunctionRegistry"
+      }
+    ],
+    "modulePath": "org.eclipse.edc:web-spi",
+    "version": "0.2.1-SNAPSHOT",
+    "name": "Web services"
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [],
+    "extensionPoints": [
+      {
+        "service": "org.eclipse.edc.connector.contract.spi.offer.ContractDefinitionResolver"
+      },
+      {
+        "service": "org.eclipse.edc.connector.contract.spi.offer.store.ContractDefinitionStore"
+      },
+      {
+        "service": "org.eclipse.edc.connector.contract.spi.negotiation.NegotiationWaitStrategy"
+      },
+      {
+        "service": "org.eclipse.edc.connector.contract.spi.negotiation.observe.ContractNegotiationObservable"
+      },
+      {
+        "service": "org.eclipse.edc.connector.contract.spi.negotiation.ProviderContractNegotiationManager"
+      },
+      {
+        "service": "org.eclipse.edc.connector.contract.spi.negotiation.ConsumerContractNegotiationManager"
+      },
+      {
+        "service": "org.eclipse.edc.connector.contract.spi.negotiation.ContractNegotiationPendingGuard"
+      },
+      {
+        "service": "org.eclipse.edc.connector.contract.spi.negotiation.store.ContractNegotiationStore"
+      },
+      {
+        "service": "org.eclipse.edc.connector.contract.spi.validation.ContractValidationService"
+      }
+    ],
+    "modulePath": "org.eclipse.edc:contract-spi",
+    "version": "0.2.1-SNAPSHOT",
+    "name": "Contract services"
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [],
+    "extensionPoints": [
+      {
+        "service": "org.eclipse.edc.connector.api.client.spi.transferprocess.TransferProcessApiClient"
+      }
+    ],
+    "modulePath": "org.eclipse.edc:control-plane-api-client-spi",
+    "version": "0.2.1-SNAPSHOT",
+    "name": "Control Plane API Services"
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [],
+    "extensionPoints": [
+      {
+        "service": "org.eclipse.edc.connector.policy.spi.store.PolicyArchive"
+      },
+      {
+        "service": "org.eclipse.edc.connector.policy.spi.store.PolicyDefinitionStore"
+      }
+    ],
+    "modulePath": "org.eclipse.edc:policy-spi",
+    "version": "0.2.1-SNAPSHOT",
+    "name": "Policy services"
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [],
+    "extensionPoints": [
+      {
+        "service": "org.eclipse.edc.connector.transfer.dataplane.spi.security.DataEncrypter"
+      }
+    ],
+    "modulePath": "org.eclipse.edc:transfer-data-plane-spi",
+    "version": "0.2.1-SNAPSHOT",
+    "name": "Transfer data plane services"
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [],
+    "extensionPoints": [
+      {
+        "service": "org.eclipse.edc.connector.transfer.spi.provision.ProvisionManager"
+      },
+      {
+        "service": "org.eclipse.edc.connector.transfer.spi.provision.ResourceManifestGenerator"
+      },
+      {
+        "service": "org.eclipse.edc.connector.transfer.spi.edr.EndpointDataReferenceReceiverRegistry"
+      },
+      {
+        "service": "org.eclipse.edc.connector.transfer.spi.TransferProcessPendingGuard"
+      },
+      {
+        "service": "org.eclipse.edc.connector.transfer.spi.status.StatusCheckerRegistry"
+      },
+      {
+        "service": "org.eclipse.edc.connector.transfer.spi.observe.TransferProcessObservable"
+      },
+      {
+        "service": "org.eclipse.edc.connector.transfer.spi.TransferProcessManager"
+      },
+      {
+        "service": "org.eclipse.edc.connector.transfer.spi.store.TransferProcessStore"
+      },
+      {
+        "service": "org.eclipse.edc.connector.transfer.spi.flow.DataFlowManager"
+      }
+    ],
+    "modulePath": "org.eclipse.edc:transfer-spi",
+    "version": "0.2.1-SNAPSHOT",
+    "name": "Transfer services"
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [],
+    "extensionPoints": [
+      {
+        "service": "org.eclipse.edc.connector.dataplane.spi.pipeline.PipelineService"
+      },
+      {
+        "service": "org.eclipse.edc.connector.dataplane.spi.manager.DataPlaneManager"
+      },
+      {
+        "service": "org.eclipse.edc.connector.dataplane.spi.registry.TransferServiceRegistry"
+      },
+      {
+        "service": "org.eclipse.edc.connector.dataplane.spi.client.DataPlaneClient"
+      }
+    ],
+    "modulePath": "org.eclipse.edc:data-plane-spi",
+    "version": "0.2.1-SNAPSHOT",
+    "name": "DataPlane services"
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [],
+    "extensionPoints": [
+      {
+        "service": "org.eclipse.edc.connector.dataplane.selector.spi.DataPlaneSelectorService"
+      },
+      {
+        "service": "org.eclipse.edc.connector.dataplane.selector.spi.client.DataPlaneSelectorClient"
+      }
+    ],
+    "modulePath": "org.eclipse.edc:data-plane-selector-spi",
+    "version": "0.2.1-SNAPSHOT",
+    "name": "DataPlane selector services"
+  },
+  {
+    "categories": [],
+    "extensions": [
+      {
+        "categories": [],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.web.spi.WebService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.http.EdcHttpClient",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "BackendServiceTestExtension",
+        "type": "extension",
+        "overview": null,
+        "className": "org.eclipse.edc.test.e2e.BackendServiceTestExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:backend-service",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.web.spi.WebService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.iam.IdentityService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.protocol.dsp.api.configuration.DspApiConfiguration",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.transform.spi.TypeTransformerRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.catalog.CatalogProtocolService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.catalog.spi.DataServiceRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Dataspace Protocol Catalog Extension",
+        "type": "extension",
+        "overview": " Creates and registers the controller for dataspace protocol catalog requests.\n",
+        "className": "org.eclipse.edc.protocol.dsp.catalog.api.DspCatalogApiExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:dsp-catalog-api",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.protocol.dsp.spi.dispatcher.DspHttpRemoteMessageDispatcher",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.protocol.dsp.spi.serialization.JsonLdRemoteMessageSerializer",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.transform.spi.TypeTransformerRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.jsonld.spi.JsonLd",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Dataspace Protocol Catalog HTTP Dispatcher Extension",
+        "type": "extension",
+        "overview": " Creates and registers the HTTP dispatcher delegate for sending a catalog request as defined in\n the dataspace protocol specification.\n",
+        "className": "org.eclipse.edc.protocol.dsp.catalog.dispatcher.DspCatalogHttpDispatcherExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:dsp-catalog-http-dispatcher",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.transform.spi.TypeTransformerRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Dataspace Protocol Catalog Transform Extension",
+        "type": "extension",
+        "overview": " Provides the transformers for catalog message types via the {@link TypeTransformerRegistry}.\n",
+        "className": "org.eclipse.edc.protocol.dsp.catalog.transform.DspCatalogTransformExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:dsp-catalog-transform",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.web.spi.WebService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.iam.IdentityService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.protocol.dsp.api.configuration.DspApiConfiguration",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.transform.spi.TypeTransformerRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.monitor.Monitor",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.contractnegotiation.ContractNegotiationProtocolService",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Dataspace Protocol Negotiation Api Extension",
+        "type": "extension",
+        "overview": " Creates and registers the controller for dataspace protocol negotiation requests.\n",
+        "className": "org.eclipse.edc.protocol.dsp.negotiation.api.DspNegotiationApiExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:dsp-negotiation-api",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.protocol.dsp.spi.dispatcher.DspHttpRemoteMessageDispatcher",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.protocol.dsp.spi.serialization.JsonLdRemoteMessageSerializer",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.jsonld.spi.JsonLd",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Dataspace Protocol Negotiation HTTP Dispatcher Extension",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.protocol.dsp.negotiation.dispatcher.DspNegotiationHttpDispatcherExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:dsp-negotiation-http-dispatcher",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.transform.spi.TypeTransformerRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Dataspace Protocol Negotiation Transform Extension",
+        "type": "extension",
+        "overview": " Provides the transformers for negotiation message types via the {@link TypeTransformerRegistry}.\n",
+        "className": "org.eclipse.edc.protocol.dsp.negotiation.transform.DspNegotiationTransformExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:dsp-negotiation-transform",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.protocol.dsp.api.configuration.DspApiConfiguration",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.monitor.Monitor",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.web.spi.WebService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.transferprocess.TransferProcessProtocolService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.transform.spi.TypeTransformerRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.iam.IdentityService",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Dataspace Protocol: TransferProcess API Extension",
+        "type": "extension",
+        "overview": " Creates and registers the controller for dataspace protocol transfer process requests.\n",
+        "className": "org.eclipse.edc.protocol.dsp.transferprocess.api.DspTransferProcessApiExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:dsp-transfer-process-api",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.protocol.dsp.spi.dispatcher.DspHttpRemoteMessageDispatcher",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.protocol.dsp.spi.serialization.JsonLdRemoteMessageSerializer",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Dataspace Protocol Transfer HTTP Dispatcher Extension",
+        "type": "extension",
+        "overview": " Provides HTTP dispatching for Dataspace Protocol transfer process messages via the {@link DspHttpRemoteMessageDispatcher}.\n",
+        "className": "org.eclipse.edc.protocol.dsp.transferprocess.dispatcher.DspTransferProcessDispatcherExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:dsp-transfer-process-http-dispatcher",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.transform.spi.TypeTransformerRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Dataspace Protocol Transfer Process Transform Extension",
+        "type": "extension",
+        "overview": " Provides the transformers for transferprocess message types via the {@link TypeTransformerRegistry}.\n",
+        "className": "org.eclipse.edc.protocol.dsp.transferprocess.transformer.DspTransferProcessTransformExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:dsp-transfer-process-transform",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.api.auth.spi.AuthenticationService"
+          }
+        ],
+        "references": [],
+        "configuration": [],
+        "name": "ApiCoreDefaultServicesExtension",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.api.ApiCoreDefaultServicesExtension"
+      },
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.transform.spi.TypeTransformerRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.validator.spi.JsonObjectValidatorRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "API Core",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.api.ApiCoreExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:api-core",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.web.spi.WebService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.system.health.HealthCheckService",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Observability API",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.api.observability.ObservabilityApiExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:api-observability",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.api.control.configuration.ControlApiConfiguration"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.web.spi.WebServer",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.web.spi.configuration.WebServiceConfigurer",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Control API configuration",
+        "type": "extension",
+        "overview": " Tells all the Control API controllers under which context alias they need to register their resources: either\n `default` or `control`\n",
+        "className": "org.eclipse.edc.connector.api.control.configuration.ControlApiConfigurationExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:control-api-configuration",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.api.management.configuration.ManagementApiConfiguration"
+          },
+          {
+            "service": "org.eclipse.edc.connector.api.management.configuration.transform.ManagementApiTypeTransformerRegistry"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.web.spi.WebService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.web.spi.WebServer",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.api.auth.spi.AuthenticationService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.web.spi.configuration.WebServiceConfigurer",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.jsonld.spi.JsonLd",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.transform.spi.TypeTransformerRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Management API configuration",
+        "type": "extension",
+        "overview": " Tells all the Management API controllers under which context alias they need to register their resources: either `default` or `management`\n",
+        "className": "org.eclipse.edc.connector.api.management.configuration.ManagementApiConfigurationExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:management-api-configuration",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.api.auth.spi.AuthenticationService"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.spi.security.Vault",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.api.auth.basic.vault-keys",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "name": "Basic authentication",
+        "type": "extension",
+        "overview": " Extension that registers an AuthenticationService that uses API Keys\n",
+        "className": "org.eclipse.edc.api.auth.basic.BasicAuthenticationExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:auth-basic",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.api.auth.spi.AuthenticationService"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.spi.security.Vault",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.api.auth.key",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.api.auth.key.alias",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "name": "Static token API Authentication",
+        "type": "extension",
+        "overview": " Extension that registers an AuthenticationService that uses API Keys\n",
+        "className": "org.eclipse.edc.api.auth.token.TokenBasedAuthenticationExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:auth-tokenbased",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [],
+        "configuration": [
+          {
+            "key": "edc.fs.config",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "name": "FS Configuration",
+        "type": "extension",
+        "overview": " Sources configuration values from a properties file.\n",
+        "className": "org.eclipse.edc.configuration.filesystem.FsConfigurationExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:configuration-filesystem",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.spi.http.EdcHttpClient",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.event.EventRouter",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          },
+          {
+            "service": "java.time.Clock",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.system.Hostname",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.events.cloudevents.endpoint",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "name": "Cloud events HTTP",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.event.cloud.http.CloudEventsHttpExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:events-cloud-http",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [],
+    "extensions": [
+      {
+        "categories": [],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.web.spi.WebService"
+          },
+          {
+            "service": "org.eclipse.edc.web.spi.validation.InterceptorFunctionRegistry"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.web.jetty.JettyService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "JerseyExtension",
+        "type": "extension",
+        "overview": null,
+        "className": "org.eclipse.edc.web.jersey.JerseyExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:jersey-core",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [],
+    "extensions": [
+      {
+        "categories": [],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.web.spi.WebService",
+            "required": true
+          },
+          {
+            "service": "io.micrometer.core.instrument.MeterRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.metrics.enabled",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.metrics.jersey.enabled",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "name": "JerseyMicrometerExtension",
+        "type": "extension",
+        "overview": null,
+        "className": "org.eclipse.edc.web.jersey.micrometer.JerseyMicrometerExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:jersey-micrometer",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [],
+    "extensions": [
+      {
+        "categories": [],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.web.spi.WebServer"
+          },
+          {
+            "service": "org.eclipse.edc.web.jetty.JettyService"
+          },
+          {
+            "service": "org.eclipse.edc.web.spi.configuration.WebServiceConfigurer"
+          }
+        ],
+        "references": [],
+        "configuration": [
+          {
+            "key": "edc.web.https.keystore.password",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.web.https.keymanager.password",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.web.https.keystore.path",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.web.https.keystore.type",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "name": "JettyExtension",
+        "type": "extension",
+        "overview": null,
+        "className": "org.eclipse.edc.web.jetty.JettyExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:jetty-core",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.web.jetty.JettyService",
+            "required": true
+          },
+          {
+            "service": "io.micrometer.core.instrument.MeterRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.metrics.enabled",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.metrics.jetty.enabled",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "name": "Jetty Micrometer Metrics",
+        "type": "extension",
+        "overview": " An extension that registers Micrometer {@link JettyConnectionMetrics} into Jetty to\n provide server metrics.\n",
+        "className": "org.eclipse.edc.web.jetty.micrometer.JettyMicrometerExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:jetty-micrometer",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.spi.iam.IdentityService"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Mock IAM",
+        "type": "extension",
+        "overview": " An IAM provider mock used for testing.\n",
+        "className": "org.eclipse.edc.iam.mock.IamMockExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:iam-mock",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "okhttp3.EventListener"
+          },
+          {
+            "service": "org.eclipse.edc.spi.system.ExecutorInstrumentation"
+          },
+          {
+            "service": "io.micrometer.core.instrument.MeterRegistry"
+          }
+        ],
+        "references": [],
+        "configuration": [
+          {
+            "key": "edc.metrics.enabled",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.metrics.system.enabled",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.metrics.okhttp.enabled",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.metrics.executor.enabled",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "name": "Micrometer Metrics",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.metrics.micrometer.MicrometerExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:micrometer-core",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [],
+        "configuration": [],
+        "name": "Logger monitor",
+        "type": "extension",
+        "overview": " Extension adding logging monitor.\n",
+        "className": "org.eclipse.edc.monitor.logger.LoggerMonitorExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:monitor-jdk-logger",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.sql.QueryExecutor"
+          }
+        ],
+        "references": [],
+        "configuration": [],
+        "name": "SQL Core",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.sql.SqlCoreExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:sql-core",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.transaction.spi.TransactionContext"
+          },
+          {
+            "service": "org.eclipse.edc.transaction.datasource.spi.DataSourceRegistry"
+          }
+        ],
+        "references": [],
+        "configuration": [],
+        "name": "Atomikos Transaction",
+        "type": "extension",
+        "overview": " Provides an implementation of a {@link DataSourceRegistry} and a {@link TransactionContext} backed by Atomikos.\n",
+        "className": "org.eclipse.edc.transaction.atomikos.AtomikosTransactionExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:transaction-atomikos",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.transaction.datasource.spi.DataSourceRegistry"
+          },
+          {
+            "service": "org.eclipse.edc.transaction.spi.TransactionContext"
+          }
+        ],
+        "references": [],
+        "configuration": [],
+        "name": "Local Transaction",
+        "type": "extension",
+        "overview": " Support for transaction context backed by one or more local resources, including a {@link DataSourceRegistry}.\n",
+        "className": "org.eclipse.edc.transaction.local.LocalTransactionExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:transaction-local",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.spi.security.PrivateKeyResolver"
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.CertificateResolver"
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.Vault"
+          }
+        ],
+        "references": [],
+        "configuration": [],
+        "name": "FS Vault",
+        "type": "extension",
+        "overview": " Bootstraps the file system-based vault extension.\n",
+        "className": "org.eclipse.edc.vault.filesystem.FsVaultExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:vault-filesystem",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.spi.system.health.HealthCheckService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.http.EdcHttpClient",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.vault.hashicorp.health.check.enabled",
+            "required": false,
+            "type": "boolean",
+            "description": "Whether or not the vault health check is enabled"
+          }
+        ],
+        "name": "HashicorpVaultHealthExtension",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.vault.hashicorp.HashicorpVaultHealthExtension"
+      },
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.spi.security.Vault"
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.PrivateKeyResolver"
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.CertificateResolver"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.spi.http.EdcHttpClient",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Hashicorp Vault",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.vault.hashicorp.HashicorpVaultExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:vault-hashicorp",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.callback.ControlPlaneApiUrl"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.web.spi.WebService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.system.Hostname",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.transferprocess.TransferProcessService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.api.control.configuration.ControlApiConfiguration",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Control Plane API",
+        "type": "extension",
+        "overview": " {@link ControlPlaneApiExtension } exposes HTTP endpoints for internal interaction with the Control Plane\n",
+        "className": "org.eclipse.edc.connector.api.ControlPlaneApiExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:control-plane-api",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.api.client.spi.transferprocess.TransferProcessApiClient"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.spi.http.EdcHttpClient",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Control Plane HTTP API client",
+        "type": "extension",
+        "overview": " Extensions that contains clients for Control Plane HTTP APIs\n",
+        "className": "org.eclipse.edc.connector.api.client.ControlPlaneApiClientExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:control-plane-api-client",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.spi.callback.CallbackProtocolResolverRegistry"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.spi.message.RemoteMessageDispatcherRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.event.EventRouter",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.monitor.Monitor",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.callback.CallbackRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Callback dispatcher extension",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.callback.dispatcher.CallbackEventDispatcherExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:callback-event-dispatcher",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.spi.message.RemoteMessageDispatcherRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.http.EdcHttpClient",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.callback.CallbackProtocolResolverRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.Vault",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Callback dispatcher http extension",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.callback.dispatcher.http.CallbackEventDispatcherHttpExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:callback-http-dispatcher",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.connector.spi.callback.CallbackRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Static callbacks extension",
+        "type": "extension",
+        "overview": " Extension for configuring the static endpoints for callbacks\n",
+        "className": "org.eclipse.edc.connector.callback.staticendpoint.CallbackStaticEndpointExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:callback-static-endpoint",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.provision.http.HttpProvisionerWebhookUrl"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.web.spi.WebService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.api.auth.spi.AuthenticationService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.transferprocess.TransferProcessService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.system.Hostname",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.api.management.configuration.ManagementApiConfiguration",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "HttpWebhookExtension",
+        "type": "extension",
+        "overview": " The HTTP Provisioner extension delegates to HTTP endpoints to perform provision operations.\n",
+        "className": "org.eclipse.edc.connector.provision.http.HttpWebhookExtension"
+      },
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.provision.ProvisionManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.policy.engine.spi.PolicyEngine",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.http.EdcHttpClient",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.provision.ResourceManifestGenerator",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.provision.http.HttpProvisionerWebhookUrl",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "HTTP Provisioning",
+        "type": "extension",
+        "overview": " The HTTP Provisioner extension delegates to HTTP endpoints to perform provision operations.\n",
+        "className": "org.eclipse.edc.connector.provision.http.HttpProvisionerExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:provision-http",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.negotiation.store.ContractNegotiationStore",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.Vault",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.PrivateKeyResolver",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.web.spi.WebService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.flow.DataFlowManager",
+            "required": true
+          },
+          {
+            "service": "java.time.Clock",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.dataplane.spi.security.DataEncrypter",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.dataplane.spi.client.DataPlaneClient",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.api.control.configuration.ControlApiConfiguration",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.dataplane.selector.spi.client.DataPlaneSelectorClient",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.dataplane.spi.token.ConsumerPullTokenExpirationDateFunction",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.callback.ControlPlaneApiUrl",
+            "required": false
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Transfer Data Plane Core",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.transfer.dataplane.TransferDataPlaneCoreExtension"
+      },
+      {
+        "categories": [],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.transfer.dataplane.spi.security.DataEncrypter"
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.dataplane.spi.token.ConsumerPullTokenExpirationDateFunction"
+          }
+        ],
+        "references": [
+          {
+            "service": "java.time.Clock",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "TransferDataPlaneDefaultServicesExtension",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.transfer.dataplane.TransferDataPlaneDefaultServicesExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:transfer-data-plane",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.edr.EndpointDataReferenceReceiverRegistry",
+            "required": true
+          },
+          {
+            "service": "okhttp3.OkHttpClient",
+            "required": true
+          },
+          {
+            "service": "dev.failsafe.RetryPolicy<java.lang.Object>",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.store.TransferProcessStore",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.observe.TransferProcessObservable",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.receiver.http.dynamic.endpoint",
+            "required": false,
+            "type": "string",
+            "description": "Fallback endpoint when url is missing the the transfer process"
+          },
+          {
+            "key": "edc.receiver.http.dynamic.auth-key",
+            "required": false,
+            "type": "string",
+            "description": "Header name that will be sent with the EDR"
+          },
+          {
+            "key": "edc.receiver.http.dynamic.auth-code",
+            "required": false,
+            "type": "string",
+            "description": "Header value that will be sent with the EDR"
+          }
+        ],
+        "name": "Http Dynamic Endpoint Data Reference Receiver",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.receiver.http.dynamic.HttpDynamicEndpointDataReferenceReceiverExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:transfer-pull-http-dynamic-receiver",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.edr.EndpointDataReferenceReceiverRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.http.EdcHttpClient",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.receiver.http.endpoint",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.receiver.http.auth-key",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.receiver.http.auth-code",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "name": "Http Endpoint Data Reference Receiver",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.receiver.http.HttpEndpointDataReferenceReceiverExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:transfer-pull-http-receiver",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.iam.did.spi.resolution.DidResolverRegistry"
+          },
+          {
+            "service": "org.eclipse.edc.iam.did.spi.resolution.DidPublicKeyResolver"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.spi.security.PrivateKeyResolver",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Identity Did Core",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.iam.did.IdentityDidCoreExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:identity-did-core",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.spi.iam.IdentityService"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.iam.did.spi.resolution.DidResolverRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.iam.did.spi.credentials.CredentialsVerifier",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.PrivateKeyResolver",
+            "required": true
+          },
+          {
+            "service": "java.time.Clock",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Distributed Identity Service",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.iam.did.service.DecentralizedIdentityServiceExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:identity-did-service",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.iam.did.spi.resolution.DidResolverRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.http.EdcHttpClient",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.iam.did.web.use.https",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "name": "Web DID",
+        "type": "extension",
+        "overview": " Initializes support for resolving Web DIDs.\n",
+        "className": "org.eclipse.edc.iam.did.web.WebDidExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:identity-did-web",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.iam.oauth2.spi.client.Oauth2Client"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.spi.http.EdcHttpClient",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "OAuth2 Client",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.iam.oauth2.Oauth2ClientExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:oauth2-client",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.spi.iam.IdentityService"
+          },
+          {
+            "service": "org.eclipse.edc.iam.oauth2.spi.Oauth2JwtDecoratorRegistry"
+          },
+          {
+            "service": "org.eclipse.edc.iam.oauth2.spi.Oauth2ValidationRulesRegistry"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.spi.http.EdcHttpClient",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.PrivateKeyResolver",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.CertificateResolver",
+            "required": true
+          },
+          {
+            "service": "java.time.Clock",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.iam.oauth2.spi.client.Oauth2Client",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.iam.oauth2.spi.CredentialsRequestAdditionalParametersProvider",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.oauth.provider.jwks.url",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.oauth.provider.audience",
+            "required": false,
+            "type": "string",
+            "description": "outgoing tokens 'aud' claim value, by default it's the connector id"
+          },
+          {
+            "key": "edc.oauth.endpoint.audience",
+            "required": false,
+            "type": "string",
+            "description": "incoming tokens 'aud' claim required value, by default it's the provider audience value"
+          },
+          {
+            "key": "edc.oauth.public.key.alias",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.oauth.certificate.alias",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.oauth.private.key.alias",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.oauth.provider.jwks.refresh",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.oauth.token.url",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.oauth.token.expiration",
+            "required": false,
+            "type": "string",
+            "description": "Token expiration in minutes. By default is 5 minutes"
+          },
+          {
+            "key": "edc.oauth.client.id",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "key": "edc.oauth.validation.nbf.leeway",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "name": "OAuth2 Identity Service",
+        "type": "extension",
+        "overview": " Provides OAuth2 client credentials flow support.\n",
+        "className": "org.eclipse.edc.iam.oauth2.Oauth2ServiceExtension"
+      },
+      {
+        "categories": [],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.iam.oauth2.spi.CredentialsRequestAdditionalParametersProvider"
+          }
+        ],
+        "references": [],
+        "configuration": [],
+        "name": "Oauth2ServiceDefaultServicesExtension",
+        "type": "extension",
+        "overview": " Provides OAuth2 client credentials flow support.\n",
+        "className": "org.eclipse.edc.iam.oauth2.Oauth2ServiceDefaultServicesExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:oauth2-core",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.spi.iam.TokenDecorator"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.iam.oauth2.spi.Oauth2JwtDecoratorRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.iam.token.scope",
+            "required": false,
+            "type": "string",
+            "description": "The value of the scope claim that is passed to DAPS to obtain a DAT"
+          }
+        ],
+        "name": "DAPS",
+        "type": "extension",
+        "overview": " Provides specialization of Oauth2 extension to interact with DAPS instance\n\n @deprecated This DAPS specific extension will be deleted and be replaced by configuration values\n",
+        "className": "org.eclipse.edc.iam.oauth2.daps.DapsExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:oauth2-daps",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.transaction.datasource.spi.DataSourceRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Commons Connection Pool",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.sql.pool.commons.CommonsConnectionPoolServiceExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:sql-pool-apache-commons",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.web.spi.WebService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.api.management.configuration.ManagementApiConfiguration",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.api.management.configuration.transform.ManagementApiTypeTransformerRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.asset.AssetService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.asset.DataAddressResolver",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.validator.spi.JsonObjectValidatorRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Management API: Asset",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.api.management.asset.AssetApiExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:asset-api",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.web.spi.WebService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.api.management.configuration.ManagementApiConfiguration",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.api.management.configuration.transform.ManagementApiTypeTransformerRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.catalog.CatalogService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.validator.spi.JsonObjectValidatorRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Management API: Catalog",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.api.management.catalog.CatalogApiExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:catalog-api",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.web.spi.WebService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.api.management.configuration.ManagementApiConfiguration",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.api.management.configuration.transform.ManagementApiTypeTransformerRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.contractagreement.ContractAgreementService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.validator.spi.JsonObjectValidatorRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Management API: Contract Agreement",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.api.management.contractagreement.ContractAgreementApiExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:contract-agreement-api",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.web.spi.WebService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.api.management.configuration.ManagementApiConfiguration",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.api.management.configuration.transform.ManagementApiTypeTransformerRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.contractdefinition.ContractDefinitionService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.validator.spi.JsonObjectValidatorRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Management API: Contract Definition",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.api.management.contractdefinition.ContractDefinitionApiExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:contract-definition-api",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.web.spi.WebService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.api.management.configuration.ManagementApiConfiguration",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.api.management.configuration.transform.ManagementApiTypeTransformerRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.contractnegotiation.ContractNegotiationService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.validator.spi.JsonObjectValidatorRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Management API: Contract Negotiation",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.api.management.contractnegotiation.ContractNegotiationApiExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:contract-negotiation-api",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.transform.spi.TypeTransformerRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.web.spi.WebService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.api.management.configuration.ManagementApiConfiguration",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.policydefinition.PolicyDefinitionService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.validator.spi.JsonObjectValidatorRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Management API: Policy Definition",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.api.management.policy.PolicyDefinitionApiExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:policy-definition-api",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.web.spi.WebService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.api.management.configuration.ManagementApiConfiguration",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.api.management.configuration.transform.ManagementApiTypeTransformerRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.spi.transferprocess.TransferProcessService",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.validator.spi.JsonObjectValidatorRegistry",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Management API: Transfer Process",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.api.management.transferprocess.TransferProcessApiExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:transfer-process-api",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [],
+        "references": [
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.provision.ResourceManifestGenerator",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.provision.ProvisionManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.PrivateKeyResolver",
+            "required": true
+          },
+          {
+            "service": "java.time.Clock",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.iam.oauth2.spi.client.Oauth2Client",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.security.Vault",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "Oauth2 Provision (DEPRECATED: please use 'data-plane-http-oauth2' instead)",
+        "type": "extension",
+        "overview": " This extension has been deprecated in favor of \"data-plane-http-oauth2\"\n\n @deprecated please use 'data-plane-http-oauth2' instead\n",
+        "className": "org.eclipse.edc.connector.provision.oauth2.Oauth2ProvisionExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:provision-oauth2-core",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.spi.asset.AssetIndex"
+          },
+          {
+            "service": "org.eclipse.edc.spi.asset.DataAddressResolver"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.transaction.datasource.spi.DataSourceRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.transaction.spi.TransactionContext",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.store.sql.assetindex.schema.AssetStatements",
+            "required": false
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.sql.QueryExecutor",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "SQL asset index",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.store.sql.assetindex.SqlAssetIndexServiceExtension"
+      }
+    ],
+    "extensionPoints": [
+      {
+        "service": "org.eclipse.edc.connector.store.sql.assetindex.schema.AssetStatements"
+      }
+    ],
+    "modulePath": "org.eclipse.edc:asset-index-sql",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.offer.store.ContractDefinitionStore"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.transaction.datasource.spi.DataSourceRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.transaction.spi.TransactionContext",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.store.sql.contractdefinition.schema.ContractDefinitionStatements",
+            "required": false
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.sql.QueryExecutor",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.datasource.contractdefinition.name",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "name": "SQL contract definition store",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.store.sql.contractdefinition.SqlContractDefinitionStoreExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:contract-definition-store-sql",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.contract.spi.negotiation.store.ContractNegotiationStore"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.transaction.datasource.spi.DataSourceRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.transaction.spi.TransactionContext",
+            "required": true
+          },
+          {
+            "service": "java.time.Clock",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.store.sql.contractnegotiation.store.schema.ContractNegotiationStatements",
+            "required": false
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.sql.QueryExecutor",
+            "required": true
+          }
+        ],
+        "configuration": [],
+        "name": "SQL contract negotiation store",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.store.sql.contractnegotiation.SqlContractNegotiationStoreExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:contract-negotiation-store-sql",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.policy.spi.store.PolicyDefinitionStore"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.transaction.datasource.spi.DataSourceRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.transaction.spi.TransactionContext",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.store.sql.policydefinition.store.schema.SqlPolicyStoreStatements",
+            "required": false
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.sql.QueryExecutor",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.datasource.policy.name",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "name": "SQL policy store",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.store.sql.policydefinition.SqlPolicyStoreExtension"
+      }
+    ],
+    "extensionPoints": [
+      {
+        "service": "org.eclipse.edc.connector.store.sql.policydefinition.store.schema.SqlPolicyStoreStatements"
+      }
+    ],
+    "modulePath": "org.eclipse.edc:policy-definition-store-sql",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.transfer.spi.store.TransferProcessStore"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.transaction.datasource.spi.DataSourceRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.transaction.spi.TransactionContext",
+            "required": true
+          },
+          {
+            "service": "java.time.Clock",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.store.sql.transferprocess.store.schema.TransferProcessStoreStatements",
+            "required": false
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.sql.QueryExecutor",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.datasource.transferprocess.name",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "name": "SQL transfer process store",
+        "type": "extension",
+        "overview": "No overview provided.",
+        "className": "org.eclipse.edc.connector.store.sql.transferprocess.SqlTransferProcessStoreExtension"
+      }
+    ],
+    "extensionPoints": [
+      {
+        "service": "org.eclipse.edc.connector.store.sql.transferprocess.store.schema.TransferProcessStoreStatements"
+      }
+    ],
+    "modulePath": "org.eclipse.edc:transfer-process-store-sql",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.dataplane.spi.store.DataPlaneStore"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.transaction.datasource.spi.DataSourceRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.transaction.spi.TransactionContext",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.dataplane.store.sql.schema.DataPlaneStatements",
+            "required": false
+          },
+          {
+            "service": "java.time.Clock",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.sql.QueryExecutor",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.datasource.dataplane.name",
+            "required": false,
+            "type": "string",
+            "description": "Name of the datasource to use for accessing data plane store"
+          }
+        ],
+        "name": "Sql Data Plane Store",
+        "type": "extension",
+        "overview": " Provides Sql Store for Data Plane Flow Requests states\n",
+        "className": "org.eclipse.edc.connector.dataplane.store.sql.SqlDataPlaneStoreExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:data-plane-store-sql",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  },
+  {
+    "categories": [
+      ""
+    ],
+    "extensions": [
+      {
+        "categories": [
+          ""
+        ],
+        "provides": [
+          {
+            "service": "org.eclipse.edc.connector.dataplane.selector.spi.store.DataPlaneInstanceStore"
+          }
+        ],
+        "references": [
+          {
+            "service": "org.eclipse.edc.transaction.datasource.spi.DataSourceRegistry",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.transaction.spi.TransactionContext",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.connector.dataplane.selector.store.sql.schema.DataPlaneInstanceStatements",
+            "required": false
+          },
+          {
+            "service": "org.eclipse.edc.spi.types.TypeManager",
+            "required": true
+          },
+          {
+            "service": "org.eclipse.edc.sql.QueryExecutor",
+            "required": true
+          }
+        ],
+        "configuration": [
+          {
+            "key": "edc.datasource.dataplaneinstance.name",
+            "required": false,
+            "type": "string",
+            "description": "Name of the datasource to use for accessing data plane instances"
+          }
+        ],
+        "name": "Sql Data Plane Instance Store",
+        "type": "extension",
+        "overview": " Extensions that expose an implementation of {@link DataPlaneInstanceStore} that uses SQL as backend storage\n",
+        "className": "org.eclipse.edc.connector.dataplane.selector.store.sql.SqlDataPlaneInstanceStoreExtension"
+      }
+    ],
+    "extensionPoints": [],
+    "modulePath": "org.eclipse.edc:data-plane-instance-store-sql",
+    "version": "0.2.1-SNAPSHOT",
+    "name": null
+  }
+]
