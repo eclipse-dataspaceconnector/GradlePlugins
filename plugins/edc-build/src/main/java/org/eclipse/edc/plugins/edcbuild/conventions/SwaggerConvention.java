@@ -25,7 +25,7 @@ import static org.eclipse.edc.plugins.edcbuild.conventions.Conventions.swaggerGe
 /**
  * Wrapper convention for the swagger generator and the openapi merger.
  *
- * @see SwaggerGeneratorConvention
+ * @see SwaggerResolveConvention
  * @see OpenApiMergerConvention
  */
 class SwaggerConvention implements EdcConvention {

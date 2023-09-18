@@ -77,7 +77,7 @@ public class Conventions {
     }
 
     public static EdcConvention swaggerGenerator() {
-        return new SwaggerGeneratorConvention();
+        return new SwaggerResolveConvention();
     }
 
     public static EdcConvention openApiMerger() {

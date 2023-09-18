@@ -19,7 +19,6 @@ import org.eclipse.edc.plugins.edcbuild.extensions.BuildExtension;
 import org.gradle.api.Project;
 import org.gradle.api.plugins.JavaPlugin;
 import org.gradle.testfixtures.ProjectBuilder;
-import org.hidetake.gradle.swagger.generator.SwaggerGeneratorPlugin;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -27,8 +26,7 @@ import java.io.File;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class SwaggerGeneratorConventionTest {
-
+class SwaggerResolveConventionTest {
 
     private static final String PROJECT_NAME = "testproject";
     private Project project;
@@ -43,10 +41,8 @@ class SwaggerGeneratorConventionTest {
 
     @Test
     void apply_whenApiGroupNotSpecified_shouldUseDefault() {
-        var convention = new SwaggerGeneratorConvention();
+        var convention = new SwaggerResolveConvention();
         convention.apply(project);
-
-        assertThat(project.getPlugins().findPlugin(SwaggerGeneratorPlugin.class)).isNotNull();
 
         var resolveTask = (ResolveTask) project.getTasks().getByName("resolve");
 
@@ -59,10 +55,8 @@ class SwaggerGeneratorConventionTest {
     void apply_whenApiGroupSpecified_shouldAppend() {
         var swagger = ConventionFunctions.requireExtension(project, BuildExtension.class).getSwagger();
         swagger.getApiGroup().set("test-api");
-        var convention = new SwaggerGeneratorConvention();
+        var convention = new SwaggerResolveConvention();
         convention.apply(project);
-
-        assertThat(project.getPlugins().findPlugin(SwaggerGeneratorPlugin.class)).isNotNull();
 
         var resolveTask = (ResolveTask) project.getTasks().getByName("resolve");
 
@@ -76,10 +70,8 @@ class SwaggerGeneratorConventionTest {
         var swagger = ConventionFunctions.requireExtension(project, BuildExtension.class).getSwagger();
         swagger.getApiGroup().set("test-api");
         swagger.getOutputDirectory().set(new File("some/funny/path"));
-        var convention = new SwaggerGeneratorConvention();
+        var convention = new SwaggerResolveConvention();
         convention.apply(project);
-
-        assertThat(project.getPlugins().findPlugin(SwaggerGeneratorPlugin.class)).isNotNull();
 
         var resolveTask = (ResolveTask) project.getTasks().getByName("resolve");
 

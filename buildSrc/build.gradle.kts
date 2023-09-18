@@ -16,7 +16,6 @@ repositories {
 dependencies {
     implementation(libs.plugin.nexus.publish)
     implementation(libs.plugin.checksum)
-    implementation(libs.plugin.swagger.generator)
     implementation(libs.plugin.swagger)
     implementation(libs.plugin.openapi.merger)
     implementation(libs.plugin.openapi.merger.app)
@@ -54,5 +53,3 @@ sourceSets {
         }
     }
 }
-
-

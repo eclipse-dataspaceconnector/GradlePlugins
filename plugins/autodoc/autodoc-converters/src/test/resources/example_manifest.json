@@ -30,7 +30,7 @@
     "extensionPoints": [
     ],
     "modulePath": "org.eclipse.edc:boot",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -184,7 +184,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:connector-core",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -257,7 +257,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:catalog-core",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -467,7 +467,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:contract-core",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -602,7 +602,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:control-plane-aggregate-services",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -650,7 +650,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:control-plane-core",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -830,7 +830,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:transfer-core",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -932,7 +932,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:data-plane-framework",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -988,7 +988,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:data-plane-selector-core",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -1051,7 +1051,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:dsp-http-core",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -1106,7 +1106,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:dsp-api-configuration",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -1151,7 +1151,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:json-ld",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -1210,7 +1210,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:data-plane-api",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -1261,7 +1261,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:data-plane-client",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -1316,7 +1316,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:data-plane-http",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -1360,7 +1360,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:data-plane-http-oauth2-core",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -1396,7 +1396,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:data-plane-kafka",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -1440,7 +1440,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:data-plane-selector-api",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -1491,7 +1491,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:data-plane-selector-client",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -1505,7 +1505,7 @@
       }
     ],
     "modulePath": "org.eclipse.edc:auth-spi",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": "Auth services"
   },
   {
@@ -1555,7 +1555,7 @@
       }
     ],
     "modulePath": "org.eclipse.edc:core-spi",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": "Core services"
   },
   {
@@ -1578,7 +1578,7 @@
       }
     ],
     "modulePath": "org.eclipse.edc:identity-did-spi",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": "IAM DID services"
   },
   {
@@ -1588,7 +1588,7 @@
     "extensions": [],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:jwt-spi",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": "JTW services"
   },
   {
@@ -1611,7 +1611,7 @@
       }
     ],
     "modulePath": "org.eclipse.edc:oauth2-spi",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": "OAuth2 services"
   },
   {
@@ -1628,7 +1628,7 @@
       }
     ],
     "modulePath": "org.eclipse.edc:policy-engine-spi",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": "Policy Engine services"
   },
   {
@@ -1642,7 +1642,7 @@
       }
     ],
     "modulePath": "org.eclipse.edc:transaction-datasource-spi",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": "DataSource services"
   },
   {
@@ -1656,7 +1656,7 @@
       }
     ],
     "modulePath": "org.eclipse.edc:transaction-spi",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": "Transactional context services"
   },
   {
@@ -1679,7 +1679,7 @@
       }
     ],
     "modulePath": "org.eclipse.edc:web-spi",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": "Web services"
   },
   {
@@ -1717,7 +1717,7 @@
       }
     ],
     "modulePath": "org.eclipse.edc:contract-spi",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": "Contract services"
   },
   {
@@ -1731,7 +1731,7 @@
       }
     ],
     "modulePath": "org.eclipse.edc:control-plane-api-client-spi",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": "Control Plane API Services"
   },
   {
@@ -1748,7 +1748,7 @@
       }
     ],
     "modulePath": "org.eclipse.edc:policy-spi",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": "Policy services"
   },
   {
@@ -1762,7 +1762,7 @@
       }
     ],
     "modulePath": "org.eclipse.edc:transfer-data-plane-spi",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": "Transfer data plane services"
   },
   {
@@ -1800,7 +1800,7 @@
       }
     ],
     "modulePath": "org.eclipse.edc:transfer-spi",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": "Transfer services"
   },
   {
@@ -1823,7 +1823,7 @@
       }
     ],
     "modulePath": "org.eclipse.edc:data-plane-spi",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": "DataPlane services"
   },
   {
@@ -1840,7 +1840,7 @@
       }
     ],
     "modulePath": "org.eclipse.edc:data-plane-selector-spi",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": "DataPlane selector services"
   },
   {
@@ -1872,7 +1872,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:backend-service",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -1920,7 +1920,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:dsp-catalog-api",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -1964,7 +1964,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:dsp-catalog-http-dispatcher",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -1996,7 +1996,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:dsp-catalog-transform",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2044,7 +2044,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:dsp-negotiation-api",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2084,7 +2084,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:dsp-negotiation-http-dispatcher",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2112,7 +2112,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:dsp-negotiation-transform",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2160,7 +2160,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:dsp-transfer-process-api",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2192,7 +2192,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:dsp-transfer-process-http-dispatcher",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2220,7 +2220,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:dsp-transfer-process-transform",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2266,7 +2266,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:api-core",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2298,7 +2298,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:api-observability",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2334,7 +2334,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:control-api-configuration",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2393,7 +2393,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:management-api-configuration",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2432,7 +2432,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:auth-basic",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2477,7 +2477,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:auth-tokenbased",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2507,7 +2507,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:configuration-filesystem",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2558,7 +2558,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:events-cloud-http",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2593,7 +2593,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:jersey-core",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2634,7 +2634,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:jersey-micrometer",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2688,7 +2688,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:jetty-core",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2733,7 +2733,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:jetty-micrometer",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2765,7 +2765,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:iam-mock",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2823,7 +2823,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:micrometer-core",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2846,7 +2846,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:monitor-jdk-logger",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2873,7 +2873,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:sql-core",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2903,7 +2903,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:transaction-atomikos",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2933,7 +2933,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:transaction-local",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -2966,7 +2966,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:vault-filesystem",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -3038,7 +3038,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:vault-hashicorp",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -3086,7 +3086,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:control-plane-api",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -3122,7 +3122,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:control-plane-api-client",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -3166,7 +3166,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:callback-event-dispatcher",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -3210,7 +3210,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:callback-http-dispatcher",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -3238,7 +3238,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:callback-static-endpoint",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -3321,7 +3321,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:provision-http",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -3419,7 +3419,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:transfer-data-plane",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -3486,7 +3486,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:transfer-pull-http-dynamic-receiver",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -3541,7 +3541,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:transfer-pull-http-receiver",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -3576,7 +3576,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:identity-did-core",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -3620,7 +3620,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:identity-did-service",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -3663,7 +3663,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:identity-did-web",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -3699,7 +3699,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:oauth2-client",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -3842,7 +3842,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:oauth2-core",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -3881,7 +3881,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:oauth2-daps",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -3909,7 +3909,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:sql-pool-apache-commons",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -3957,7 +3957,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:asset-api",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -4001,7 +4001,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:catalog-api",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -4045,7 +4045,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:contract-agreement-api",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -4089,7 +4089,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:contract-definition-api",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -4133,7 +4133,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:contract-negotiation-api",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -4177,7 +4177,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:policy-definition-api",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -4221,7 +4221,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:transfer-process-api",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -4273,7 +4273,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:provision-oauth2-core",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -4328,7 +4328,7 @@
       }
     ],
     "modulePath": "org.eclipse.edc:asset-index-sql",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -4383,7 +4383,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:contract-definition-store-sql",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -4435,7 +4435,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:contract-negotiation-store-sql",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -4494,7 +4494,7 @@
       }
     ],
     "modulePath": "org.eclipse.edc:policy-definition-store-sql",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -4557,7 +4557,7 @@
       }
     ],
     "modulePath": "org.eclipse.edc:transfer-process-store-sql",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -4616,7 +4616,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:data-plane-store-sql",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   },
   {
@@ -4671,7 +4671,7 @@
     ],
     "extensionPoints": [],
     "modulePath": "org.eclipse.edc:data-plane-instance-store-sql",
-    "version": "0.2.1-SNAPSHOT",
+    "version": "0.2.2-SNAPSHOT",
     "name": null
   }
 ]

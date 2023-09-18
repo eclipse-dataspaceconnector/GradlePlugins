@@ -18,7 +18,6 @@ dependencies {
     implementation(libs.edc.runtime.metamodel)
     implementation(libs.plugin.nexus.publish)
     implementation(libs.plugin.checksum)
-    implementation(libs.plugin.swagger.generator)
     implementation(libs.plugin.swagger)
     implementation(libs.plugin.openapi.merger)
 }
