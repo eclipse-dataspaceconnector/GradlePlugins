@@ -84,8 +84,8 @@ maven/mavencentral/org.assertj/assertj-core/3.23.1, Apache-2.0, approved, clearl
 maven/mavencentral/org.checkerframework/checker-compat-qual/2.5.2, MIT, approved, clearlydefined
 maven/mavencentral/org.checkerframework/checker-qual/3.12.0, MIT, approved, clearlydefined
 maven/mavencentral/org.codehaus.mojo/animal-sniffer-annotations/1.17, MIT, approved, clearlydefined
-maven/mavencentral/org.eclipse.edc/autodoc-processor/0.2.2-SNAPSHOT, Apache-2.0, approved, technology.edc
-maven/mavencentral/org.eclipse.edc/runtime-metamodel/0.2.2-SNAPSHOT, Apache-2.0, approved, technology.edc
+maven/mavencentral/org.eclipse.edc/autodoc-processor/0.3.1-SNAPSHOT, Apache-2.0, approved, technology.edc
+maven/mavencentral/org.eclipse.edc/runtime-metamodel/0.3.1-SNAPSHOT, Apache-2.0, approved, technology.edc
 maven/mavencentral/org.glassfish.web/javax.el/2.2.6, EPL-1.0 OR Apache-2.0, approved, rt.gemini.web
 maven/mavencentral/org.hibernate.validator/hibernate-validator-annotation-processor/6.0.2.Final, Apache-2.0 AND LicenseRef-Public-Domain, approved, CQ20221
 maven/mavencentral/org.hibernate.validator/hibernate-validator/6.0.2.Final, Apache-2.0 AND LicenseRef-Public-Domain, approved, CQ15540
