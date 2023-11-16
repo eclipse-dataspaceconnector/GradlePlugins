@@ -21,9 +21,11 @@ import org.eclipse.edc.runtime.metamodel.annotation.Provides;
 import org.eclipse.edc.runtime.metamodel.annotation.Setting;
 import org.eclipse.edc.spi.system.ServiceExtension;
 
+import static org.eclipse.edc.plugins.autodoc.core.processor.Constants.TEST_SETTING_DEFAULT_VALUE;
+
 @Provides(SomeOtherService.class)
 public class SampleExtensionWithoutAnnotation implements ServiceExtension {
-    @Setting(value = Constants.TEST_SETTING_NAME, required = true)
+    @Setting(value = Constants.TEST_SETTING_NAME, required = true, defaultValue = TEST_SETTING_DEFAULT_VALUE)
     public static final String TEST_SETTING = Constants.TEST_SETTING_KEY;
 
     @Inject

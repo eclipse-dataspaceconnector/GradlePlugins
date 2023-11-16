@@ -30,54 +30,47 @@ import static org.assertj.core.api.Assertions.assertThat;
 class MarkdownManifestRendererTest {
 
     private ManifestWriter writer;
-    private ByteArrayOutputStream testOutputStream;
+    private final ByteArrayOutputStream testOutputStream = new ByteArrayOutputStream();
 
     @BeforeEach
     void setUp() {
-        testOutputStream = new ByteArrayOutputStream();
         writer = new ManifestWriter(new MarkdownManifestRenderer(testOutputStream));
     }
 
     @Test
     void convert_exampleJson() {
         var list = generateManifest("example_manifest.json");
-        var os = writer.convert(list);
 
-        var result = testOutputStream.toString();
-        assertThat(result).isNotNull();
-        assertThat(os).isEqualTo(testOutputStream);
+        var result = writer.convert(list);
 
+        assertThat(result).isNotNull().isEqualTo(testOutputStream);
     }
 
     @Test
     void convert_simpleJson() {
         var list = generateManifest("simple_manifest.json");
-        var os = writer.convert(list);
 
-        var result = testOutputStream.toString();
-        assertThat(result).isNotNull();
-        assertThat(os).isEqualTo(testOutputStream);
+        var result = writer.convert(list);
 
+        assertThat(result).isNotNull().isEqualTo(testOutputStream);
     }
 
     @Test
     void convert_emptyObject() {
         var list = List.of(EdcModule.Builder.newInstance().modulePath("foo").version("0.1.0-bar").build());
-        var os = writer.convert(list);
+        var result = writer.convert(list);
 
-        var result = testOutputStream.toString();
-        assertThat(result).isNotNull();
-        assertThat(os).isEqualTo(testOutputStream);
-
-        assertThat(result).contains("Module `foo:0.1.0-bar`");
-        assertThat(result).contains("### Extension points");
-        assertThat(result).contains("### Extensions");
-        assertThat(result).doesNotContain("Configuration:");
+        assertThat(result).isNotNull().isEqualTo(testOutputStream).extracting(Object::toString).satisfies(markdown -> {
+            assertThat(markdown).contains("Module `foo:0.1.0-bar`");
+            assertThat(markdown).contains("### Extension points");
+            assertThat(markdown).contains("### Extensions");
+            assertThat(markdown).doesNotContain("Configuration:");
+        });
     }
 
     private List<EdcModule> generateManifest(String filename) {
-        try {
-            return new ObjectMapper().readValue(Thread.currentThread().getContextClassLoader().getResourceAsStream(filename), new TypeReference<>() {
+        try (var stream = Thread.currentThread().getContextClassLoader().getResourceAsStream(filename)) {
+            return new ObjectMapper().readValue(stream, new TypeReference<>() {
             });
         } catch (IOException e) {
             throw new RuntimeException(e);

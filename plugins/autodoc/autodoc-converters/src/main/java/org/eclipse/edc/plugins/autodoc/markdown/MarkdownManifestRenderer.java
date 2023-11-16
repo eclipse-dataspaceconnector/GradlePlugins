@@ -115,11 +115,15 @@ public class MarkdownManifestRenderer implements ManifestRenderer {
     public void renderConfigurations(List<ConfigurationSetting> configuration) {
         // add configuration table
         var tableBuilder = new Table.Builder()
-                .addRow("Key", "Required", "Type", "Pattern", "Min", "Max", "Description");
+                .addRow("Key", "Required", "Type", "Default", "Pattern", "Min", "Max", "Description");
 
-        configuration.forEach(setting -> tableBuilder.addRow(code(setting.getKey()),
+
+
+        configuration.forEach(setting -> tableBuilder.addRow(
+                code(setting.getKey()),
                 setting.isRequired() ? code("*") : null,
                 code(setting.getType()),
+                ofNullable(setting.getDefaultValue()).map(Markdown::code).orElse(null),
                 ofNullable(setting.getPattern()).map(Markdown::code).orElse(null),
                 ofNullable(setting.getMinimum()).map(m -> code(String.valueOf(m))).orElse(null),
                 ofNullable(setting.getMaximum()).map(m -> code(String.valueOf(m))).orElse(null),

@@ -29,6 +29,5 @@ class RepositoriesConvention implements EdcConvention {
         handler.mavenLocal();
         handler.maven(r -> r.setUrl(URI.create("https://oss.sonatype.org/content/repositories/snapshots/")));
         handler.mavenCentral();
-        handler.maven(r -> r.setUrl(URI.create("https://maven.iais.fraunhofer.de/artifactory/eis-ids-public/")));
     }
 }

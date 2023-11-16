@@ -2,7 +2,7 @@
 format.version = "1.1"
 
 [versions]
-edc = "0.3.1-SNAPSHOT"
+edc = "0.3.2-SNAPSHOT"
 jackson = "2.15.2"
 jetbrainsAnnotation = "24.0.1"
 

@@ -1,14 +1,18 @@
 maven/mavencentral/com.fasterxml.jackson.core/jackson-annotations/2.11.1, Apache-2.0, approved, CQ23491
 maven/mavencentral/com.fasterxml.jackson.core/jackson-annotations/2.15.2, Apache-2.0, approved, #7947
+maven/mavencentral/com.fasterxml.jackson.core/jackson-annotations/2.15.3, Apache-2.0, approved, #7947
 maven/mavencentral/com.fasterxml.jackson.core/jackson-core/2.15.2, MIT AND Apache-2.0, approved, #7932
+maven/mavencentral/com.fasterxml.jackson.core/jackson-core/2.15.3, MIT AND Apache-2.0, approved, #7932
 maven/mavencentral/com.fasterxml.jackson.core/jackson-databind/2.11.1, Apache-2.0, approved, CQ23093
 maven/mavencentral/com.fasterxml.jackson.core/jackson-databind/2.15.2, Apache-2.0, approved, #7934
+maven/mavencentral/com.fasterxml.jackson.core/jackson-databind/2.15.3, Apache-2.0, approved, #7934
 maven/mavencentral/com.fasterxml.jackson.core/jackson-databind/2.2.3, Apache-2.0, approved, #10357
 maven/mavencentral/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml/2.11.1, Apache-2.0, approved, CQ23094
-maven/mavencentral/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml/2.15.2, Apache-2.0, approved, #8802
+maven/mavencentral/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml/2.15.3, Apache-2.0, approved, #8802
 maven/mavencentral/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/2.11.1, Apache-2.0, approved, clearlydefined
 maven/mavencentral/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/2.15.2, Apache-2.0, approved, #7930
-maven/mavencentral/com.fasterxml.jackson/jackson-bom/2.15.2, Apache-2.0, approved, #7929
+maven/mavencentral/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/2.15.3, Apache-2.0, approved, #7930
+maven/mavencentral/com.fasterxml.jackson/jackson-bom/2.15.3, Apache-2.0, approved, #7929
 maven/mavencentral/com.fasterxml/classmate/1.3.1, Apache-2.0, approved, CQ10239
 maven/mavencentral/com.github.fge/btf/1.2, Apache-2.0 OR LGPL-2.0-or-later, approved, CQ14455
 maven/mavencentral/com.github.fge/jackson-coreutils/1.6, Apache-2.0 or LGPL-3.0-only, approved, #2572
@@ -52,13 +56,13 @@ maven/mavencentral/io.swagger.parser.v3/swagger-parser-v2-converter/2.0.23, Apac
 maven/mavencentral/io.swagger.parser.v3/swagger-parser-v3/2.0.23, Apache-2.0, approved, clearlydefined
 maven/mavencentral/io.swagger.parser.v3/swagger-parser/2.0.23, Apache-2.0, approved, clearlydefined
 maven/mavencentral/io.swagger/swagger-annotations/1.6.2, Apache-2.0, approved, #3792
-maven/mavencentral/io.swagger/swagger-compat-spec-parser/1.0.52, Apache-2.0, approved, clearlydefined
+maven/mavencentral/io.swagger/swagger-compat-spec-parser/1.0.52, None, restricted, #11479
 maven/mavencentral/io.swagger/swagger-core/1.6.1, Apache-2.0, approved, #4358
 maven/mavencentral/io.swagger/swagger-core/1.6.2, Apache-2.0, approved, #4358
-maven/mavencentral/io.swagger/swagger-models/1.6.2, Apache-2.0, approved, clearlydefined
+maven/mavencentral/io.swagger/swagger-models/1.6.2, LicenseRef-scancode-proprietary-license, restricted, #11403
 maven/mavencentral/io.swagger/swagger-parser/1.0.52, Apache-2.0, approved, #4359
 maven/mavencentral/jakarta.activation/jakarta.activation-api/1.2.1, EPL-2.0 OR BSD-3-Clause OR GPL-2.0-only with Classpath-exception-2.0, approved, ee4j.jaf
-maven/mavencentral/jakarta.validation/jakarta.validation-api/2.0.2, Apache-2.0, approved, clearlydefined
+maven/mavencentral/jakarta.validation/jakarta.validation-api/2.0.2, Apache-2.0, approved, ee4j.validation
 maven/mavencentral/jakarta.xml.bind/jakarta.xml.bind-api/2.3.2, BSD-3-Clause, approved, ee4j.jaxb
 maven/mavencentral/javax.activation/activation/1.1, CDDL-1.0, approved, CQ134
 maven/mavencentral/javax.el/javax.el-api/2.2.5, CDDL-1.1 OR GPL-2.0-only WITH Classpath-exception-2.0, approved, #2770
@@ -81,12 +85,12 @@ maven/mavencentral/org.apache.httpcomponents/httpclient/4.5.2, Apache-2.0, appro
 maven/mavencentral/org.apache.httpcomponents/httpcore/4.4.4, Apache-2.0, approved, CQ11716
 maven/mavencentral/org.apiguardian/apiguardian-api/1.1.2, Apache-2.0, approved, clearlydefined
 maven/mavencentral/org.assertj/assertj-core/3.23.1, Apache-2.0, approved, clearlydefined
-maven/mavencentral/org.checkerframework/checker-compat-qual/2.5.2, MIT, approved, clearlydefined
+maven/mavencentral/org.checkerframework/checker-compat-qual/2.5.2, GPL-2.0-only with Classpath-Exception-2.0, approved, #11598
 maven/mavencentral/org.checkerframework/checker-qual/3.12.0, MIT, approved, clearlydefined
 maven/mavencentral/org.codehaus.mojo/animal-sniffer-annotations/1.17, MIT, approved, clearlydefined
-maven/mavencentral/org.eclipse.edc/autodoc-processor/0.3.1-SNAPSHOT, Apache-2.0, approved, technology.edc
-maven/mavencentral/org.eclipse.edc/runtime-metamodel/0.3.1-SNAPSHOT, Apache-2.0, approved, technology.edc
-maven/mavencentral/org.glassfish.web/javax.el/2.2.6, EPL-1.0 OR Apache-2.0, approved, rt.gemini.web
+maven/mavencentral/org.eclipse.edc/autodoc-processor/0.3.2-SNAPSHOT, Apache-2.0, approved, technology.edc
+maven/mavencentral/org.eclipse.edc/runtime-metamodel/0.3.2-SNAPSHOT, Apache-2.0, approved, technology.edc
+maven/mavencentral/org.glassfish.web/javax.el/2.2.6, CDDL-1.0 OR GPL-2.0-only WITH Classpath-exception-2.0, approved, #1654
 maven/mavencentral/org.hibernate.validator/hibernate-validator-annotation-processor/6.0.2.Final, Apache-2.0 AND LicenseRef-Public-Domain, approved, CQ20221
 maven/mavencentral/org.hibernate.validator/hibernate-validator/6.0.2.Final, Apache-2.0 AND LicenseRef-Public-Domain, approved, CQ15540
 maven/mavencentral/org.jacoco/org.jacoco.agent/0.8.8, EPL-2.0, approved, CQ23285
@@ -119,4 +123,4 @@ maven/mavencentral/org.slf4j/slf4j-api/1.7.25, MIT, approved, CQ13368
 maven/mavencentral/org.slf4j/slf4j-api/1.7.28, MIT, approved, CQ13368
 maven/mavencentral/org.slf4j/slf4j-api/1.7.30, MIT, approved, CQ13368
 maven/mavencentral/org.slf4j/slf4j-ext/1.7.28, MIT, approved, CQ9128
-maven/mavencentral/org.yaml/snakeyaml/2.0, Apache-2.0 AND (Apache-2.0 OR BSD-3-Clause OR EPL-1.0 OR GPL-2.0-or-later OR LGPL-2.1-or-later), approved, #7275
+maven/mavencentral/org.yaml/snakeyaml/2.1, Apache-2.0, approved, #9847
