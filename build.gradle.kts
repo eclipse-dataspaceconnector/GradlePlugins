@@ -1,3 +1,5 @@
+import java.nio.file.Paths
+
 plugins {
     // Apply the Java Gradle plugin development plugin to add support for developing Gradle plugins
     checkstyle

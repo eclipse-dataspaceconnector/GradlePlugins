@@ -2,11 +2,15 @@
 format.version = "1.1"
 
 [versions]
-edc = "0.4.1-SNAPSHOT"
-jackson = "2.15.2"
+assertj = "3.24.2"
+edc = "0.4.2-SNAPSHOT"
+jackson = "2.16.0"
 jetbrainsAnnotation = "24.0.1"
+jupiter = "5.10.1"
+mockito = "5.8.0"
 
 [libraries]
+assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj" }
 edc-runtime-metamodel = { module = "org.eclipse.edc:runtime-metamodel", version.ref = "edc" }
 jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson" }
 jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref = "jackson" }
@@ -14,6 +18,8 @@ jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", ver
 jackson-dataformat-xml = { module = "com.fasterxml.jackson.dataformat:jackson-dataformat-xml", version.ref = "jackson" }
 jackson-datatypeJsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson" }
 jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrainsAnnotation" }
+jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jupiter" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
 plugin-checksum = { module = "gradle.plugin.org.gradle.crypto:checksum", version = "1.4.0" }
 plugin-nexus-publish = { module = "io.github.gradle-nexus:publish-plugin", version = "1.3.0" }
 plugin-openapi-merger = { module = "com.rameshkp:openapi-merger-gradle-plugin", version = "1.0.5" }

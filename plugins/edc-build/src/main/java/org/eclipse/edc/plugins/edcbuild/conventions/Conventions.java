@@ -37,7 +37,7 @@ public class Conventions {
     }
 
     public static EdcConvention defaultDependencies() {
-        return new DefaultDependencyConvention();
+        return new DefaultTestDependencyConvention();
     }
 
     public static EdcConvention mavenPom() {

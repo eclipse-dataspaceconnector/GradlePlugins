@@ -1,3 +1,5 @@
+import java.nio.file.Files
+
 plugins {
     `java-gradle-plugin`
 }
@@ -39,10 +41,13 @@ gradlePlugin {
     }
 }
 
+val generatedSourcesFolder = buildDir.resolve("generated").resolve("sources");
+
 sourceSets {
     main {
         java {
             srcDirs(
+                generatedSourcesFolder,
                 "../plugins/autodoc/autodoc-plugin/src/main",
                 "../plugins/autodoc/autodoc-converters/src/main",
                 "../plugins/edc-build/src/main",
@@ -52,4 +57,37 @@ sourceSets {
             )
         }
     }
+}
+
+val createVersions = tasks.register("createVersions") {
+    val folder = generatedSourcesFolder.resolve("java")
+        .resolve("org").resolve("eclipse").resolve("edc").resolve("plugins")
+        .resolve("edcbuild")
+    folder.mkdirs()
+
+    val versionsClassFile = folder.resolve("Versions.java");
+    outputs.file(versionsClassFile)
+
+    doLast {
+        versionCatalogs.find("libs")
+            .ifPresent { catalog ->
+                val head = "package org.eclipse.edc.plugins.edcbuild;\npublic interface Versions {\n"
+                val tail = "\n}";
+
+                val constants = listOf("jupiter", "mockito", "assertj")
+                    .mapNotNull { name ->
+                        catalog.findVersion(name)
+                            .map { version -> "    String %s = \"%s\";".format(name.toUpperCase(), version) }
+                            .orElse(null)
+                    }
+                    .joinToString("\n", head, tail)
+
+                Files.writeString(versionsClassFile.toPath(), constants)
+            }
+    }
+
+}
+
+tasks.compileJava {
+    dependsOn(createVersions)
 }
