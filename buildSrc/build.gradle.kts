@@ -41,7 +41,7 @@ gradlePlugin {
     }
 }
 
-val generatedSourcesFolder = buildDir.resolve("generated").resolve("sources");
+val generatedSourcesFolder = layout.buildDirectory.asFile.get().resolve("generated").resolve("sources");
 
 sourceSets {
     main {
@@ -74,10 +74,10 @@ val createVersions = tasks.register("createVersions") {
                 val head = "package org.eclipse.edc.plugins.edcbuild;\npublic interface Versions {\n"
                 val tail = "\n}";
 
-                val constants = listOf("jupiter", "mockito", "assertj")
+                val constants = listOf("assertj", "checkstyle", "jupiter", "mockito")
                     .mapNotNull { name ->
                         catalog.findVersion(name)
-                            .map { version -> "    String %s = \"%s\";".format(name.toUpperCase(), version) }
+                            .map { version -> "    String %s = \"%s\";".format(name.uppercase(), version) }
                             .orElse(null)
                     }
                     .joinToString("\n", head, tail)

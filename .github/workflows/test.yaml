@@ -20,10 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/actions/setup-build
+      - uses: eclipse-edc/.github/.github/actions/setup-build@main
 
       - name: Run unit tests
-        uses: ./.github/actions/run-tests
+        uses: eclipse-edc/.github/.github/actions/run-tests@main
         with:
           command: ./gradlew test
 
@@ -61,4 +61,4 @@ jobs:
         with:
           path: artifacts
       - name: CodeCov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4

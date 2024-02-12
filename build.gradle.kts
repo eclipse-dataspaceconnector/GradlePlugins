@@ -35,18 +35,8 @@ allprojects {
         }
     }
 
-    // configure checkstyle version
     checkstyle {
-        toolVersion = "10.0"
         maxErrors = 0 // does not tolerate errors
-    }
-
-    // let's not generate any reports because that is done from within the Github Actions workflow
-    tasks.withType<Checkstyle> {
-        reports {
-            html.required.set(false)
-            xml.required.set(true)
-        }
     }
 
     tasks.withType<Jar> {
@@ -56,5 +46,11 @@ allprojects {
             from("${rootProject.projectDir.path}/NOTICE.md")
             from("${rootProject.projectDir.path}/LICENSE")
         }
+    }
+
+    // FIXME - workaround for https://github.com/gradle/gradle/issues/26091
+    val signingTasks = tasks.withType<Sign>()
+    tasks.withType<AbstractPublishToMaven>().configureEach {
+        mustRunAfter(signingTasks)
     }
 }

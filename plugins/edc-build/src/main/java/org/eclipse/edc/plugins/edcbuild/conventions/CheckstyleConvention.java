@@ -14,6 +14,7 @@
 
 package org.eclipse.edc.plugins.edcbuild.conventions;
 
+import org.eclipse.edc.plugins.edcbuild.Versions;
 import org.gradle.api.Project;
 import org.gradle.api.plugins.quality.Checkstyle;
 import org.gradle.api.plugins.quality.CheckstyleExtension;
@@ -30,13 +31,11 @@ import static org.eclipse.edc.plugins.edcbuild.conventions.ConventionFunctions.r
  */
 class CheckstyleConvention implements EdcConvention {
 
-    private static final String DEFAULT_TOOL_VERSION = "10.0";
-
     @Override
     public void apply(Project target) {
         var cse = requireExtension(target, CheckstyleExtension.class);
 
-        cse.setToolVersion(DEFAULT_TOOL_VERSION);
+        cse.setToolVersion(Versions.CHECKSTYLE);
         cse.setMaxErrors(0);
         target.getTasks().withType(Checkstyle.class, cs -> cs.reports(r -> {
             r.getHtml().getRequired().set(false);
