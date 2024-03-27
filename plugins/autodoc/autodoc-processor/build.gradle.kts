@@ -17,4 +17,6 @@ plugins {
 
 dependencies {
     api(libs.edc.runtime.metamodel)
+
+    testImplementation(libs.edc.core.spi)
 }

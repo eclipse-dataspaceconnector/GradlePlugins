@@ -12,7 +12,11 @@
  *
  */
 
-package org.eclipse.edc.spi.system;
+package org.eclipse.edc.plugins.autodoc.core.processor.test;
 
-public interface ServiceExtension {
+import org.eclipse.edc.runtime.metamodel.annotation.Setting;
+
+public class NotExtensionWithSetting {
+    @Setting("the setting must stay in a ServiceExtension class")
+    private static final String UNEXPECTED_SETTING = "any";
 }

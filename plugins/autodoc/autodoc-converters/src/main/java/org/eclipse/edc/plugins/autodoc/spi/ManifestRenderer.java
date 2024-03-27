@@ -79,7 +79,7 @@ public interface ManifestRenderer {
     /**
      * Render all services, that are <em>provided</em> by a particular module.
      */
-    void renderExposedServices(List<Service> provides);
+    void renderProvidedServices(List<Service> provides);
 
     /**
      * Render all services, that an extension <em>requires</em>, i.e. that must be provided by <em>other extensions</em>.

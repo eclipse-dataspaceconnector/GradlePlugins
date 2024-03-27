@@ -139,7 +139,7 @@ public class MarkdownManifestRenderer implements ManifestRenderer {
     }
 
     @Override
-    public void renderExposedServices(List<Service> provides) {
+    public void renderProvidedServices(List<Service> provides) {
         // add exposed services
         stringBuilder.append(heading("Provided services:", 5)).append(NEWLINE);
         stringBuilder.append(listOrNone(provides.stream().map(s -> code(s.getService())).toList().toArray())).append(NEWLINE);

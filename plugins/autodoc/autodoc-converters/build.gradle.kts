@@ -17,5 +17,7 @@ plugins {
 
 dependencies {
     api(libs.edc.runtime.metamodel)
+
     implementation(libs.markdown.gen)
+    implementation(libs.j2html)
 }

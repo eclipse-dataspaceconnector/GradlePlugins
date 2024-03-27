@@ -38,6 +38,7 @@ import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedOptions;
 import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
+import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 import javax.tools.StandardLocation;
 
@@ -52,8 +53,8 @@ import static javax.tools.Diagnostic.Kind.NOTE;
  * {@link #EDC_OUTPUTDIR_OVERRIDE} as a processor parameter.
  */
 @SupportedAnnotationTypes({
-        "org.eclipse.edc.runtime.metamodel.annotation.EdcSetting",
-        "org.eclipse.edc.runtime.metamodel.annotation.EdcSettingContext",
+        "org.eclipse.edc.runtime.metamodel.annotation.Setting",
+        "org.eclipse.edc.runtime.metamodel.annotation.SettingContext",
         "org.eclipse.edc.runtime.metamodel.annotation.Extension",
         "org.eclipse.edc.runtime.metamodel.annotation.Spi",
         "org.eclipse.edc.runtime.metamodel.annotation.ExtensionPoint",
@@ -72,7 +73,6 @@ public class EdcModuleProcessor extends AbstractProcessor {
     private final ObjectMapper mapper = new ObjectMapper();
 
     private ModuleIntrospector moduleIntrospector;
-
     private OverviewIntrospector overviewIntrospector;
 
     private EdcModule.Builder moduleBuilder;
@@ -80,11 +80,12 @@ public class EdcModuleProcessor extends AbstractProcessor {
     private ExtensionIntrospector extensionIntrospector;
 
     private ModuleType moduleType;
+    private Set<Element> extensionElements;
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
         super.init(processingEnv);
-        moduleIntrospector = new ModuleIntrospector(processingEnv.getElementUtils(), processingEnv.getTypeUtils());
+        moduleIntrospector = new ModuleIntrospector(processingEnv);
         //todo: replace this Noop converter with an actual JavadocConverter
         overviewIntrospector = new OverviewIntrospector(javadoc -> javadoc, processingEnv.getElementUtils());
 
@@ -93,8 +94,11 @@ public class EdcModuleProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment environment) {
-        if (!initializeModuleBuilder(environment)) {
-            return false;  // error, do not continue processing
+        if (moduleBuilder == null) {
+            var result = initializeModuleBuilder(environment);
+            if (!result) {
+                return false;  // error, do not continue processing
+            }
         }
 
         if (environment.processingOver()) {
@@ -105,8 +109,6 @@ public class EdcModuleProcessor extends AbstractProcessor {
         }
 
         if (moduleType == ModuleType.EXTENSION) {
-            var extensionElements = moduleIntrospector.getExtensionElements(environment);
-
             extensionElements.forEach(element -> {
                 extensionBuilder = EdcServiceExtension.Builder.newInstance().type(moduleType)
                         .name(extensionIntrospector.getExtensionName(element))
@@ -116,6 +118,7 @@ public class EdcModuleProcessor extends AbstractProcessor {
                         .configuration(extensionIntrospector.resolveConfigurationSettings(element))
                         .overview(overviewIntrospector.generateModuleOverview(moduleType, environment))
                         .categories(extensionIntrospector.getExtensionCategories(element));
+
                 moduleBuilder.extension(extensionBuilder.build());
             });
         } else {
@@ -129,11 +132,6 @@ public class EdcModuleProcessor extends AbstractProcessor {
     }
 
     private boolean initializeModuleBuilder(RoundEnvironment environment) {
-        if (moduleBuilder != null) {
-            // already initialized in a previous round
-            return true;
-        }
-
         var id = processingEnv.getOptions().get(ID);
         if (id == null) {
             processingEnv.getMessager().printMessage(ERROR, "Value for '" + ID + "' not set on processor configuration. Skipping manifest generation.");
@@ -146,7 +144,8 @@ public class EdcModuleProcessor extends AbstractProcessor {
             return false;
         }
 
-        moduleType = determineAndValidateModuleType(environment);
+        extensionElements = moduleIntrospector.getExtensionElements(environment);
+        moduleType = determineAndValidateModuleType(environment, extensionElements);
         if (moduleType == ModuleType.INVALID) {
             // error or not a module, return
             return false;
@@ -158,8 +157,7 @@ public class EdcModuleProcessor extends AbstractProcessor {
     }
 
     @Nullable
-    private ModuleType determineAndValidateModuleType(RoundEnvironment environment) {
-        var extensionElements = moduleIntrospector.getExtensionElements(environment);
+    private ModuleType determineAndValidateModuleType(RoundEnvironment environment, Set<Element> extensionElements) {
         if (extensionElements.isEmpty()) {
             // check if it is an SPI
             var spiElements = environment.getElementsAnnotatedWith(Spi.class);

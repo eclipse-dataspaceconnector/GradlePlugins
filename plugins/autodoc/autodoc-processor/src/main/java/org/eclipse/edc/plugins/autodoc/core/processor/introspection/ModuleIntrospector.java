@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
@@ -35,6 +36,7 @@ import javax.lang.model.util.Elements;
 import javax.lang.model.util.Types;
 
 import static java.util.stream.Collectors.toList;
+import static javax.tools.Diagnostic.Kind.ERROR;
 import static org.eclipse.edc.plugins.autodoc.core.processor.compiler.AnnotationFunctions.attributeStringValues;
 import static org.eclipse.edc.plugins.autodoc.core.processor.compiler.AnnotationFunctions.attributeValue;
 import static org.eclipse.edc.plugins.autodoc.core.processor.compiler.AnnotationFunctions.mirrorFor;
@@ -44,14 +46,16 @@ import static org.eclipse.edc.plugins.autodoc.core.processor.compiler.Annotation
  */
 public class ModuleIntrospector {
     private static final String SERVICE_EXTENSION_NAME = "org.eclipse.edc.spi.system.ServiceExtension";
+    private static final String SYSTEM_EXTENSION_NAME = "org.eclipse.edc.spi.system.SystemExtension";
     private final Elements elementUtils;
     private final Types typeUtils;
+    private final ProcessingEnvironment processingEnv;
 
-    public ModuleIntrospector(Elements elementUtils, Types typeUtils) {
-        this.elementUtils = elementUtils;
-        this.typeUtils = typeUtils;
+    public ModuleIntrospector(ProcessingEnvironment processingEnv) {
+        this.processingEnv = processingEnv;
+        this.elementUtils = processingEnv.getElementUtils();
+        this.typeUtils = processingEnv.getTypeUtils();
     }
-
 
     public List<String> getCategories(RoundEnvironment environment) {
         var extensionElement = environment.getElementsAnnotatedWith(Spi.class).iterator().next();
@@ -89,23 +93,30 @@ public class ModuleIntrospector {
      * @return a set containing the distinct extension symbols. Elements in that set are most likely of type Symbol.ClassSymbol
      */
     public Set<Element> getExtensionElements(RoundEnvironment environment) {
-        var extensionClasses = environment.getElementsAnnotatedWith(Extension.class);
-        var settingsSymbols = environment.getElementsAnnotatedWith(Setting.class);
+        var settingsSymbols = environment.getElementsAnnotatedWith(Setting.class).stream()
+                .peek(setting -> {
+                    var enclosingElement = setting.getEnclosingElement().asType();
+                    var serviceExtensionType = typeUtils.erasure(elementUtils.getTypeElement(SYSTEM_EXTENSION_NAME).asType());
+                    if (!typeUtils.isAssignable(enclosingElement, serviceExtensionType)) {
+                        var message = "@Setting annotation must be used inside a ServiceExtension implementation, the " +
+                                "ones defined in %s will be excluded from the autodoc manifest".formatted(enclosingElement);
+                        processingEnv.getMessager().printMessage(ERROR, message, setting);
+                    }
+                });
+
         var injectSymbols = environment.getElementsAnnotatedWith(Inject.class);
         var providerSymbols = environment.getElementsAnnotatedWith(Provider.class);
-        var providesClasses = environment.getElementsAnnotatedWith(Provides.class);
-        var requiresClasses = environment.getElementsAnnotatedWith(Requires.class);
 
-        var symbols = settingsSymbols.stream();
-        symbols = Stream.concat(symbols, injectSymbols.stream());
-        symbols = Stream.concat(symbols, providerSymbols.stream());
-
-        var classes = symbols.map(Element::getEnclosingElement)
+        var classes = Stream.of(settingsSymbols, injectSymbols.stream(), providerSymbols.stream())
+                .reduce(Stream::concat)
+                .orElse(Stream.empty())
+                .map(Element::getEnclosingElement)
                 .filter(this::isExtension)
                 .collect(Collectors.toSet());
-        classes.addAll(requiresClasses);
-        classes.addAll(providesClasses);
-        classes.addAll(extensionClasses);
+
+        classes.addAll(environment.getElementsAnnotatedWith(Requires.class));
+        classes.addAll(environment.getElementsAnnotatedWith(Provides.class));
+        classes.addAll(environment.getElementsAnnotatedWith(Extension.class));
 
         return classes;
     }

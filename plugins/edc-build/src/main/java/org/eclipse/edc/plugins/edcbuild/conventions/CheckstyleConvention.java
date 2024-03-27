@@ -33,13 +33,27 @@ class CheckstyleConvention implements EdcConvention {
 
     @Override
     public void apply(Project target) {
-        var cse = requireExtension(target, CheckstyleExtension.class);
+        var extension = requireExtension(target, CheckstyleExtension.class);
 
-        cse.setToolVersion(Versions.CHECKSTYLE);
-        cse.setMaxErrors(0);
-        target.getTasks().withType(Checkstyle.class, cs -> cs.reports(r -> {
+        guavaWorkaround(target);
+
+        extension.setToolVersion(Versions.CHECKSTYLE);
+        extension.setMaxErrors(0);
+        extension.setMaxWarnings(0);
+
+        target.getTasks().withType(Checkstyle.class, checkstyle -> checkstyle.reports(r -> {
             r.getHtml().getRequired().set(false);
             r.getXml().getRequired().set(true);
         }));
+    }
+
+    /**
+     * Ref. <a href="https://github.com/gradle/gradle/issues/27035#issuecomment-1814589243">https://github.com/gradle/gradle/issues/27035#issuecomment-1814589243</a>
+     *
+     * @param target the project.
+     */
+    private static void guavaWorkaround(Project target) {
+        target.getConfigurations().getByName("checkstyle").getResolutionStrategy().getCapabilitiesResolution()
+                .withCapability("com.google.collections:google-collections", details -> details.select("com.google.guava:guava:0"));
     }
 }

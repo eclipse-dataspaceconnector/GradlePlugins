@@ -1,7 +1,4 @@
-import java.nio.file.Paths
-
 plugins {
-    // Apply the Java Gradle plugin development plugin to add support for developing Gradle plugins
     checkstyle
     `maven-publish`
     signing
@@ -20,7 +17,7 @@ allprojects {
 
     configure<org.eclipse.edc.plugins.autodoc.AutodocExtension> {
         processorVersion.set(annotationProcessorVersion)
-        outputDirectory.set(project.buildDir)
+        outputDirectory.set(project.layout.buildDirectory.asFile.get())
     }
 
     // for all gradle plugins:
@@ -33,10 +30,6 @@ allprojects {
             scmUrl.set(edcScmUrl)
             scmConnection.set(edcScmConnection)
         }
-    }
-
-    checkstyle {
-        maxErrors = 0 // does not tolerate errors
     }
 
     tasks.withType<Jar> {

@@ -21,6 +21,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.Set;
 
+import static java.util.Comparator.comparing;
+
 /**
  * Reads any input to a manifest, which is represented as {@link List} of {@link EdcModule}.
  * All model objects are delegated down to implementors using callbacks.
@@ -40,9 +42,8 @@ public class ManifestWriter {
 
     protected void beginConversion(List<EdcModule> input) {
         renderer.renderDocumentHeader();
-        input.forEach(this::handleModule);
+        input.stream().sorted(comparing(EdcModule::getModulePath)).forEach(this::handleModule);
     }
-
 
     /**
      * Delegates one top-level element, which are {@link EdcModule} objects.
@@ -53,13 +54,10 @@ public class ManifestWriter {
     protected void handleModule(EdcModule edcModule) {
         renderer.renderModuleHeading(edcModule.getName(), edcModule.getModulePath(), edcModule.getVersion());
 
-        // append categories as italic text
         renderer.renderCategories(edcModule.getCategories());
 
-        // append extension points
         renderer.renderExtensionPoints(edcModule.getExtensionPoints());
 
-        // append extensions
         handleExtensions(edcModule.getExtensions());
     }
 
@@ -71,13 +69,10 @@ public class ManifestWriter {
     protected void handleServiceExtension(EdcServiceExtension serviceExtension) {
         renderer.renderExtensionHeader(serviceExtension.getClassName(), serviceExtension.getName(), serviceExtension.getOverview(), serviceExtension.getType());
 
-        // add configuration table
         renderer.renderConfigurations(serviceExtension.getConfiguration());
 
-        // add exposed services
-        renderer.renderExposedServices(serviceExtension.getProvides());
+        renderer.renderProvidedServices(serviceExtension.getProvides());
 
-        // add injected services
         renderer.renderReferencedServices(serviceExtension.getReferences());
     }
 
