@@ -23,7 +23,6 @@ public class Conventions {
         return new CheckstyleConvention();
     }
 
-
     public static EdcConvention mavenPublishing() {
         return new MavenPublishingConvention();
     }
@@ -86,5 +85,9 @@ public class Conventions {
     
     public static EdcConvention mavenPublication() {
         return new MavenPublicationConvention();
+    }
+
+    public static EdcConvention printClasspath() {
+        return new PrintClasspathConvention();
     }
 }

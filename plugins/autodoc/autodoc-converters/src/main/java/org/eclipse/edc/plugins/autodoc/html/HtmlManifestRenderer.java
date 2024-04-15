@@ -193,7 +193,7 @@ public class HtmlManifestRenderer implements ManifestRenderer {
                 var clazz = index % 2 == 0 ? "even" : "odd";
                 return tr(
                         td(code(setting.getKey())),
-                        td(setting.isRequired() ? code("✓") : null).attr("align", "center"),
+                        td(setting.isRequired() ? code("x") : null).attr("align", "center"),
                         td(code(setting.getType())).attr("align", "center"),
                         td(code(setting.getDefaultValue())),
                         td(codeOrNull(setting.getPattern())).attr("align", "center"),

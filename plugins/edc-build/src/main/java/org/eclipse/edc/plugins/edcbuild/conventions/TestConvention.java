@@ -17,6 +17,7 @@ package org.eclipse.edc.plugins.edcbuild.conventions;
 import org.gradle.api.Project;
 import org.gradle.api.tasks.testing.Test;
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat;
+import org.jetbrains.annotations.NotNull;
 
 import static java.util.Optional.ofNullable;
 
@@ -25,22 +26,43 @@ import static java.util.Optional.ofNullable;
  */
 class TestConvention implements EdcConvention {
     private static void determineJunitPlatform(Test testTask) {
+        // parse task exclusion
+        var excludedTagsProperty = System.getProperty("excludeTags");
+        var excludedTags = getTags(excludedTagsProperty);
+
+
         // Target all type of test e.g. -DrunAllTests="true"
         var runAllTests = Boolean.parseBoolean(System.getProperty("runAllTests", "false"));
         if (runAllTests) {
-            testTask.useJUnitPlatform();
+            // honor excluded tags -> blacklisting
+            if (excludedTags.length > 0) {
+                testTask.useJUnitPlatform(platform -> platform.excludeTags(excludedTags));
+            } else {
+                testTask.useJUnitPlatform();
+            }
         } else {
             var includeTagsProperty = System.getProperty("includeTags");
-            var tags = ofNullable(includeTagsProperty)
-                    .map(prop -> prop.split(","))
-                    .orElse(new String[0]);
+            var includedTags = getTags(includeTagsProperty);
 
-            if (tags.length > 0) {
-                testTask.useJUnitPlatform(platform -> platform.includeTags(tags));
+            // white-list included tags...
+            if (includedTags.length > 0) {
+                testTask.useJUnitPlatform(platform -> platform.includeTags(includedTags));
+                //... and possibly black-list excluded tags
+                if (excludedTags.length > 0) {
+                    testTask.useJUnitPlatform(platform -> platform.excludeTags(excludedTags));
+                }
             } else {
+                // no point in evaluating other excluded tags, if only unit tests are run
                 testTask.useJUnitPlatform(platform -> platform.excludeTags("IntegrationTest"));
             }
         }
+    }
+
+    @NotNull
+    private static String[] getTags(String tagsSeparatedByComma) {
+        return ofNullable(tagsSeparatedByComma)
+                .map(prop -> prop.split(","))
+                .orElse(new String[0]);
     }
 
     @Override

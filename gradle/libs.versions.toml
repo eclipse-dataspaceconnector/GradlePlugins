@@ -4,8 +4,8 @@ format.version = "1.1"
 [versions]
 assertj = "3.25.3"
 checkstyle = "10.14.2"
-edc = "0.5.2-SNAPSHOT"
-jackson = "2.16.2"
+edc = "0.6.1-SNAPSHOT"
+jackson = "2.17.0"
 jetbrainsAnnotation = "24.0.1"
 jupiter = "5.10.1"
 mockito = "5.11.0"
@@ -18,7 +18,6 @@ edc-core-spi = { module = "org.eclipse.edc:core-spi", version.ref = "edc" }
 jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson" }
 jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref = "jackson" }
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
-jackson-dataformat-xml = { module = "com.fasterxml.jackson.dataformat:jackson-dataformat-xml", version.ref = "jackson" }
 jackson-datatypeJsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson" }
 jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrainsAnnotation" }
 jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jupiter" }

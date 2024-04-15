@@ -30,6 +30,7 @@ import static org.eclipse.edc.plugins.edcbuild.conventions.Conventions.mavenPom;
 import static org.eclipse.edc.plugins.edcbuild.conventions.Conventions.mavenPublication;
 import static org.eclipse.edc.plugins.edcbuild.conventions.Conventions.mavenPublishing;
 import static org.eclipse.edc.plugins.edcbuild.conventions.Conventions.nexusPublishing;
+import static org.eclipse.edc.plugins.edcbuild.conventions.Conventions.printClasspath;
 import static org.eclipse.edc.plugins.edcbuild.conventions.Conventions.repositories;
 import static org.eclipse.edc.plugins.edcbuild.conventions.Conventions.rootBuildScript;
 import static org.eclipse.edc.plugins.edcbuild.conventions.Conventions.signing;
@@ -74,7 +75,8 @@ public class EdcBuildPlugin implements Plugin<Project> {
                     allDependencies(),
                     tests(),
                     jar(),
-                    swagger()
+                    swagger(),
+                    printClasspath()
             ).forEach(c -> c.apply(project));
         });
 
