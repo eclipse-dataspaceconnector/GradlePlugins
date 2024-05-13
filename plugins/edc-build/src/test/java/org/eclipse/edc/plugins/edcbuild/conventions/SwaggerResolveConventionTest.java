@@ -25,6 +25,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.eclipse.edc.plugins.edcbuild.conventions.SwaggerResolveConvention.SWAGGER_GRADLE_PLUGIN;
 
 class SwaggerResolveConventionTest {
 
@@ -34,7 +35,7 @@ class SwaggerResolveConventionTest {
     @BeforeEach
     void setUp() {
         project = ProjectBuilder.builder().withName(PROJECT_NAME).build();
-        project.getPluginManager().apply("io.swagger.core.v3.swagger-gradle-plugin");
+        project.getPluginManager().apply(SWAGGER_GRADLE_PLUGIN);
         project.getPluginManager().apply(JavaPlugin.class);
         project.getExtensions().create("edcBuild", BuildExtension.class, project.getObjects());
     }

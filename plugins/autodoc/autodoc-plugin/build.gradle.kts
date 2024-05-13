@@ -6,9 +6,7 @@ dependencies {
     implementation(libs.edc.runtime.metamodel)
     implementation(libs.jetbrains.annotations)
     implementation(libs.jackson.core)
-    implementation(libs.jackson.annotations)
     implementation(libs.jackson.databind)
-    implementation(libs.jackson.datatypeJsr310)
     implementation(project(":plugins:autodoc:autodoc-converters"))
 }
 

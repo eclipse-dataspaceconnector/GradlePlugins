@@ -3,22 +3,23 @@ format.version = "1.1"
 
 [versions]
 assertj = "3.25.3"
-checkstyle = "10.15.0"
-edc = "0.6.3-SNAPSHOT"
-jackson = "2.17.0"
+checkstyle = "10.16.0"
+edc = "0.6.4-SNAPSHOT"
+jackson = "2.17.1"
 jetbrainsAnnotation = "24.0.1"
+jakarta-ws-rs = "4.0.0"
 jupiter = "5.10.1"
 mockito = "5.11.0"
+swagger = "2.2.21"
 
 [libraries]
 assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj" }
 checkstyle = { module = "com.puppycrawl.tools:checkstyle", version.ref = "checkstyle" }
 edc-runtime-metamodel = { module = "org.eclipse.edc:runtime-metamodel", version.ref = "edc" }
 edc-core-spi = { module = "org.eclipse.edc:core-spi", version.ref = "edc" }
-jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson" }
 jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref = "jackson" }
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
-jackson-datatypeJsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson" }
+jakarta-ws-rs-api = { module = "jakarta.ws.rs:jakarta.ws.rs-api", version.ref = "jakarta-ws-rs" }
 jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrainsAnnotation" }
 jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jupiter" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
@@ -26,7 +27,7 @@ plugin-checksum = { module = "gradle.plugin.org.gradle.crypto:checksum", version
 plugin-nexus-publish = { module = "io.github.gradle-nexus:publish-plugin", version = "1.3.0" }
 plugin-openapi-merger = { module = "com.rameshkp:openapi-merger-gradle-plugin", version = "1.0.5" }
 plugin-openapi-merger-app = { module = "com.rameshkp:openapi-merger-app", version = "1.0.5" }
-plugin-swagger = { module = "io.swagger.core.v3:swagger-gradle-plugin", version = "2.2.15" }
+plugin-swagger = { module = "io.swagger.core.v3:swagger-gradle-plugin", version.ref = "swagger" }
 
 # third party
 j2html = { module = "com.j2html:j2html", version = "1.6.0" }
