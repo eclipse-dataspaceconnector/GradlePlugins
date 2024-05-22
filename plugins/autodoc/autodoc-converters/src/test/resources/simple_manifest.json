@@ -157,7 +157,7 @@
       }
     ],
     "modulePath": "org.eclipse.edc:connector-core",
-    "version": "0.6.4-SNAPSHOT",
+    "version": "0.6.5-SNAPSHOT",
     "name": null
   }
 ]
