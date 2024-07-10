@@ -48,26 +48,45 @@ class SwaggerResolveConvention implements EdcConvention {
                     "jakarta.ws.rs:jakarta.ws.rs-api:%s".formatted(Versions.JAKARTA_WS_RS)
             ).forEach(dependency -> target.getDependencies().add(IMPLEMENTATION_CONFIGURATION_NAME, dependency));
 
-            var javaExt = requireExtension(target, JavaPluginExtension.class);
+            var classpath = requireExtension(target, JavaPluginExtension.class)
+                    .getSourceSets().getAt("main").getRuntimeClasspath();
             var swaggerExt = requireExtension(target, BuildExtension.class).getSwagger();
-            var fallbackOutputDir = defaultOutputDirectory(target);
-
-            var outputFileName = swaggerExt.getOutputFilename().getOrElse(target.getName());
-
-            var apiGroup = swaggerExt.getApiGroup().getOrElse(DEFAULT_API_GROUP);
-            var outputDir = Path.of(swaggerExt.getOutputDirectory().getOrElse(fallbackOutputDir.toFile()).toURI())
-                    .resolve(apiGroup)
-                    .toFile();
 
             var resourcePkgs = swaggerExt.getResourcePackages(); // already provides the default
 
             target.getTasks().withType(ResolveTask.class, task -> {
+                var outputFileName = swaggerExt.getOutputFilename().getOrElse(target.getName());
+                var fallbackOutputDir = defaultOutputDirectory(target);
+                var apiGroup = swaggerExt.getApiGroup().getOrElse(DEFAULT_API_GROUP);
+
+                var outputDir = Path.of(swaggerExt.getOutputDirectory().getOrElse(fallbackOutputDir.toFile()).toURI())
+                        .resolve(apiGroup)
+                        .toFile();
+
                 task.setOutputFileName(outputFileName);
                 task.setOutputDir(outputDir);
                 task.setOutputFormat(ResolveTask.Format.YAML);
                 task.setSortOutput(true);
                 task.setPrettyPrint(true);
-                task.setClasspath(javaExt.getSourceSets().getAt("main").getRuntimeClasspath());
+                task.setClasspath(classpath);
+                task.setBuildClasspath(task.getClasspath());
+                task.setResourcePackages(resourcePkgs);
+            });
+
+            target.getTasks().register("openapi", ResolveTask.class).configure(task -> {
+                var outputDir = target.getLayout().getBuildDirectory().getAsFile().get().toPath()
+                        .resolve("docs").resolve("openapi")
+                        .toFile();
+
+                target.getTasks().findByName("jar").dependsOn(task);
+                task.setGroup("documentation");
+                task.setDescription("Generates openapi specification documentation.");
+                task.setOutputFileName(swaggerExt.getApiGroup().getOrElse("openapi"));
+                task.setOutputDir(outputDir);
+                task.setOutputFormat(ResolveTask.Format.YAML);
+                task.setSortOutput(true);
+                task.setPrettyPrint(true);
+                task.setClasspath(classpath);
                 task.setBuildClasspath(task.getClasspath());
                 task.setResourcePackages(resourcePkgs);
             });

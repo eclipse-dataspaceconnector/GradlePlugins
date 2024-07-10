@@ -24,7 +24,9 @@ import org.gradle.api.artifacts.ConfigurablePublishArtifact;
 import org.gradle.api.publish.PublishingExtension;
 import org.gradle.api.publish.maven.MavenPom;
 import org.gradle.api.publish.maven.MavenPublication;
+import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
 import java.nio.file.Path;
 
 import static org.eclipse.edc.plugins.edcbuild.conventions.ConventionFunctions.requireExtension;
@@ -50,27 +52,47 @@ class MavenArtifactConvention implements EdcConvention {
                     .filter(p -> p instanceof MavenPublication)
                     .map(p -> (MavenPublication) p)
                     .peek(mavenPub -> mavenPub.pom(pom -> setPomInformation(pomExt, target, pom)))
-                    .forEach(mavenPub -> addManifestArtifact(target, mavenPub));
+                    .forEach(mavenPub -> {
+                        addArtifactIfExist(target, getManifestFile(target), mavenPub, artifact -> {
+                            artifact.setClassifier("manifest");
+                            artifact.setType("json");
+                            artifact.builtBy("autodoc");
+                        });
+
+                        var openapiFiles = target.getLayout().getBuildDirectory().getAsFile().get().toPath()
+                                .resolve("docs").resolve("openapi").toFile()
+                                .listFiles((dir, name) -> name.endsWith(".yaml"));
+
+                        if (openapiFiles != null) {
+                            for (var openapiFile : openapiFiles) {
+                                addArtifactIfExist(target, openapiFile, mavenPub, artifact -> {
+                                    artifact.setClassifier(getFilenameWithoutExtension(openapiFile));
+                                    artifact.setType("yaml");
+                                    artifact.builtBy("openapi");
+                                });
+                            }
+                        }
+
+                    });
         });
     }
 
-    private Action<ConfigurablePublishArtifact> configureManifestArtifact() {
-        return artifact -> {
-            artifact.setClassifier("manifest");
-            artifact.setType("json");
-            artifact.builtBy("autodoc");
-        };
+    private String getFilenameWithoutExtension(File openapiFile) {
+        return openapiFile.getName().substring(0, openapiFile.getName().lastIndexOf("."));
     }
 
-    private void addManifestArtifact(Project target, MavenPublication mavenPub) {
-        var autodocExt = requireExtension(target, AutodocExtension.class);
-        var pathToManifest = autodocExt.getOutputDirectory().getOrElse(target.getBuildDir()).getAbsolutePath();
-        var manifestFileName = "edc.json";
-        var manifestFile = Path.of(pathToManifest, manifestFileName).toFile();
-        if (manifestFile.exists()) {
-            var jsonArtifact = target.getArtifacts().add("archives", manifestFile, configureManifestArtifact());
-            mavenPub.getArtifacts().artifact(jsonArtifact);
+    private void addArtifactIfExist(Project project, File location, MavenPublication mavenPublication, Action<ConfigurablePublishArtifact> configureAction) {
+        if (location.exists()) {
+            mavenPublication.getArtifacts()
+                    .artifact(project.getArtifacts().add("archives", location, configureAction));
         }
+    }
+
+    private static @NotNull File getManifestFile(Project target) {
+        var autodocExt = requireExtension(target, AutodocExtension.class);
+        var pathToManifest = autodocExt.getOutputDirectory().getOrElse(target.getLayout().getBuildDirectory().getAsFile().get()).getAbsolutePath();
+        var manifestFileName = "edc.json";
+        return Path.of(pathToManifest, manifestFileName).toFile();
     }
 
     private static void setPomInformation(MavenPomExtension pomExt, Project project, MavenPom pom) {

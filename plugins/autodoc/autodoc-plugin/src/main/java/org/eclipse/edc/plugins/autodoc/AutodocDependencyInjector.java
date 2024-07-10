@@ -51,13 +51,12 @@ class AutodocDependencyInjector implements DependencyResolutionListener {
             project.getLogger().debug("{}: use configured version from AutodocExtension (override) [{}]", project.getName(), version);
         } else {
             artifact += ":+";
-            project.getLogger().warn("No explicit configuration value for the annotationProcessor version was found. Please supply a configuration for the Autodoc Plugin's annotationProcessor.");
+            project.getLogger().info("No explicit configuration value for the annotationProcessor version was found. Current one will be used");
         }
 
         if (addDependency(project, artifact)) {
             var task = project.getTasks().findByName("compileJava");
-            if ((task instanceof JavaCompile)) {
-                var compileJava = (JavaCompile) task;
+            if ((task instanceof JavaCompile compileJava)) {
                 var versionArg = format("-A%s=%s", VERSION, project.getVersion());
                 var idArg = format("-A%s=%s:%s", ID, project.getGroup(), project.getName());
                 var outputArg = format("-A%s=%s", OUTPUTDIR, extension.getOutputDirectory().getOrNull());

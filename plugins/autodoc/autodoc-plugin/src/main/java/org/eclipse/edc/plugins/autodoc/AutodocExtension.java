@@ -22,7 +22,8 @@ public abstract class AutodocExtension {
     private boolean includeTransitive = true;
 
     /**
-     * Overrides the default output directory relative to the current project dir
+     * Overrides the default output directory relative to the current project dir.
+     * By default, it is the "build" directory.
      */
     public abstract Property<File> getOutputDirectory();
 

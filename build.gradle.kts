@@ -8,17 +8,11 @@ plugins {
 }
 
 val group: String by project
-val annotationProcessorVersion: String by project
 val edcScmUrl: String by project
 val edcScmConnection: String by project
 
 allprojects {
     apply(plugin = "${group}.edc-build")
-
-    configure<org.eclipse.edc.plugins.autodoc.AutodocExtension> {
-        processorVersion.set(annotationProcessorVersion)
-        outputDirectory.set(project.layout.buildDirectory.asFile.get())
-    }
 
     // for all gradle plugins:
     pluginManager.withPlugin("java-gradle-plugin") {
